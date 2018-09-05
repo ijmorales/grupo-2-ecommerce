@@ -20,7 +20,9 @@ a{
 
 /*  */
 
-/* Contenedor principal */
+/* Contenedor principal
+NOTA IMPORTANTE: Este afecta todas las cajas de productos en mobile.
+att: Ruben. */
 
 div.main-container{
   margin: 0 auto;
