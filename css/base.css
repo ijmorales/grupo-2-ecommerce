@@ -15,7 +15,11 @@ li{
 a{
   text-decoration: none;
   display: inline-block;
-  color: black;
+}
+
+a:hover{
+  text-decoration: none !important;
+  color: white !important;
 }
 
 /*  */
@@ -31,118 +35,182 @@ div.main-container{
 
 /*  */
 /* Estilos del Header */
+.logo{
+  width: 8rem;
+}
 
-header{
-  width: 100%;
-  height: 20vh;
-  display: flex;
-  flex-flow: row nowrap;
+.main-navbar{
   background-color: #404041;
+  min-height: 5rem;
+  margin-bottom: 1rem;
 }
 
-header div.logo-container{
-  width: 25%;
-  height: 100%;
-  display: flex;
-
-}
-
-header div.logo-container img{
-  width: 100%;
-  height: 100%;
-}
-
-header div.menu-container{
-  width: 75%;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-}
-
-header div.menu-container nav.header-nav{
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  height: 60%;
-}
-header div.menu-container nav ul.links-productos{
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
-  width: 70%;
-  height: 100%;
-  padding-left: 2%;
-  padding-right: 2%;
-}
-
-nav ul li a.nav-link{
-  font-weight: bold;
+.nav-link{
+  color: white !important;
+  text-align: center;
   text-transform: uppercase;
-  color: white;
-}
-
-header div.menu-container nav ul.links-cuenta{
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
-  width: 30%;
-  height: 100%;
-}
-
-header div.menu-container nav ul.links-cuenta li{
-  width: 45%;
-  width: 45%;
 }
 
 .nav-button{
-  width: 100%;
   background-color: #404041;
-  border: solid 2px;
+  border: solid .1rem;
   border-color: white;
   color: white;
 }
 
-/* Estilos de los links de arriba*/
+.menu-container{
 
-header div.menu-container div.links-utiles{
-  align-self: flex-end;
-  display: flex;
-  justify-content: space-between;
-  width: 75%;
-  padding-top: 1%;
-  padding-left: 1%;
-  padding-right: 1%;
 }
 
-header div.menu-container div.links-utiles *{
+.links-utiles{
+  display: flex;
+  align-self: flex-end;
+}
+
+.links-extra ul{
+  display: flex;
+  flex-direction: row;
+}
+
+.llamenos ul{
+  display: flex;
+  flex-direction: row;
+}
+
+.rrss ul{
+  display: flex;
+}
+
+.links-extra ul li:nth-child(2){
+  margin-left: .180rem;
+  margin-right: .180rem;
+}
+
+.links-extra ul li:nth-child(4){
+  margin-left: .180rem;
+  margin-right: .180rem;
+}
+
+
+.llamenos {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-transform: uppercase;
+}
+
+.links-extra ul li:nth-child(3){
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+
+.links-extra ul li:last-child{
+  margin-left: 0.2em;
+}
+
+.links-utiles *{
   color: #99cc33;
 }
 
-header div.menu-container div.links-utiles span.links-extra ul{
+.main-footer{
+  margin-top: 1rem;
+  height: 12vh;
+  background-color: #404041;
+  width: 100%;
   display: flex;
-  flex-flow: row nowrap;
+  padding: .5rem 1rem;
+}
+
+
+.logo-footer{
+  height: 3rem;
+  width: 8rem;
+  display: none;
+}
+
+.informacion-contacto{
+  display: flex;
+  flex-flow: column nowrap;
+  margin-left: 1rem;
+}
+
+.informacion-contacto ul{
+  height: 100%;
+}
+
+.footer-info{
+  height: 33%;
+  margin: 0;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.header-rrss{
+  display: flex;
+}
+
+.header-rrss ul{
+  display: flex;
   justify-content: space-between;
+  margin: 0;
 }
 
-span.links-extra ul li:nth-child(1){
-  margin-right: 0.2em;
+.footer-rrss{
+  display: none;
+  align-items: center;
 }
 
-span.links-extra ul li:nth-child(3){
-  margin-left: 0.2em;
-  margin-right: 0.2em;
-}
-
-span.links-extra ul li:last-child{
-  margin-left: 0.2em;
-}
-
-div.links-utiles span.rrss ul{
+.footer-rrss ul{
   display: flex;
-  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.rrss-verde{
+  color: #99cc33;
+}
+
+/* Seteo links utiles para que no aparezcan, excepto con la media querie */
+.links-utiles{
+  display: none;
+}
+
+@media (min-width: 768px){
+  .informacion-contacto{
+    display: flex;
+  }
+  .logo{
+    width: 7.8rem !important;
+  }
+  .footer-rrss{
+    display: flex;
+  }
+  .informacion-contacto ul li p{
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar-nav{
+    flex-direction: row-reverse !important;
+    justify-content: flex-end;
+  }
+
+  .logo{
+    width: 12rem;
+  }
+
+  .navbar-collapse{
+    flex-direction: column;
+  }
+  .links-utiles {
+    display: flex;
+  }
+}
+
+@media (min-width: 1440px) {
+  .logo{
+    width: 14rem !important;
+  }
 }
 
 /*  */
