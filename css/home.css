@@ -8,7 +8,9 @@ body{
   font-family: sans-serif;
 
 }
-
+.boxes-container{
+  background-color: #3e3f40;
+}
 .productos ul, ol {
   color: white;
   background: grey;
@@ -24,12 +26,20 @@ a{
 }
 
 .photo {
-  width: 100%;
-  height: 40vh;
+  width: 36vh;
+  height: 28vh;
   border-bottom-left-radius: 13px;
   border-top-left-radius: 13px;
   border: 1px solid black;
 
+}
+.promo-img{
+  vertical-align: middle;
+  border-radius: 10px;
+  border: 1px solid black;
+  width: 90%;
+  margin-left: 5%;
+  height: 32vh;
 }
 section.productos-container{
   display: flex;
@@ -44,15 +54,30 @@ div.promo-carousel-container{
   height: 155px;
 }
 
+div.h2-productos{
+  background-color: #3e3f40;
+  color: #99cc33;
+}
+.h2-promo-eventos{
+  margin-left: 15px;
+  text-align: center;
+  margin-top: 5px;
+}
+
 div.promo-text{
   border: 2px outset;
   text-align: center;
   margin-bottom: 5px;
+  background-color: #3e3f40;
+  color: #99cc33;
 }
 
 div.product-text{
   text-align: center;
   margin: 2px 2px 2px 2px;
+  color: #99cc33;
+  height: 20vh;
+
 }
 .w-100 {
     width: 80%!important;
@@ -73,9 +98,10 @@ article.productos{
   display: flex;
   align-items: flex-start;
   margin-bottom: 15px;
-  background-color: #004085;
+  background-color: #212529;
   border: 1px solid black;
   border-radius: 15px;
+  height: 28vh;
 
 
 }
@@ -94,7 +120,7 @@ article.productos{
 
 /* Boton negro de lista de productos */
 .masInfo {
-	background-color: red;
+	background-color: #400d0d;
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
 	border-radius:6px;
@@ -106,6 +132,9 @@ article.productos{
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
+}
+.masInfo:hover {
+  color: red;
 }
 
 header{
@@ -130,6 +159,30 @@ header{
   }
   section.productos-container{
     width: 784px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+  article.productos{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    background-color: #212529;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 348px;
+    margin: 15px;
+    height: 48vh;;
+  }
+  div.product-text{
+    color: #99cc33;
+    height: 20vh;
+
+  }
+  .masInfo{
+    font-size: 14px;
   }
   div.sidebar-container{
     width: 252px;
@@ -144,13 +197,13 @@ header{
   }
   section.promo-carousel-container{
     width: 100%;
-    height: 250px;
+    height: 36vh;
 
   }
   div.carousel-item img{
-      height: 250px;
-      margin-left: 0%;
-      margin-right: 0%;
+    height: 280px;
+    margin-left: 0%;
+    margin-right: 0%;
   }
   .w-100 {
      width: 100%!important;
@@ -161,9 +214,32 @@ header{
     align-content: flex-start;
     flex-direction: row-reverse;
     margin-top: 100px;
+    background-color: #3e3f40;
   }
   .promo-img{
     width: 252px;
+    height: 20vh;
+    margin-left: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
+  .photo{
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 13px;
+    height: 30vh;
+    width: 100%;
+
+  }
+  .h2-promo-eventos{
+    margin-left: 15px;
+    text-align: center;
+    margin-top: 5px;
+
+
+  }
+  div.promo-carousel-container {
+    height: 24vh;
+    margin-bottom: 0px;
   }
 
 
