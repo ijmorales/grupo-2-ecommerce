@@ -24,13 +24,16 @@ a:hover{
 
 /*  */
 
+
+
 /* Contenedor principal
 NOTA IMPORTANTE: Este afecta todas las cajas de productos en mobile.
 att: Ruben. */
 
 div.main-container{
   margin: 0 auto;
-  max-width: 1180px;
+  max-width: 1180px !important;
+  width: 100%;
 }
 
 /*  */
@@ -197,7 +200,7 @@ div.main-container{
   }
 
   .logo{
-    width: 12rem;
+    width: 16rem !important;
   }
 
   .navbar-collapse{
@@ -210,7 +213,7 @@ div.main-container{
 
 @media (min-width: 1440px) {
   .logo{
-    width: 14rem !important;
+    width: 18rem !important;
   }
 }
 
