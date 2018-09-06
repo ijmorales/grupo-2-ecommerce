@@ -1,3 +1,5 @@
+/* Reseteos generales */
+
 *{
   box-sizing: border-box;
 }
@@ -234,4 +236,5 @@ header{
     height: 24vh;
     margin-bottom: 0px;
   }
+
 }
