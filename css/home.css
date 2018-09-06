@@ -9,7 +9,7 @@ body{
 
 }
 .boxes-container{
-  background-color: #3e3f40;
+  background-color: #dee2e6;
 }
 .productos ul, ol {
   color: white;
@@ -209,7 +209,7 @@ header{
     align-content: flex-start;
     flex-direction: row-reverse;
     margin-top: 100px;
-    background-color: #3e3f40;
+    background-color: #dee2e6;
   }
   .promo-img{
     width: 252px;
