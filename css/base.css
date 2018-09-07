@@ -195,7 +195,7 @@ div.main-container{
 
 @media (min-width: 1024px) {
   .navbar-nav{
-    flex-direction: row-reverse !important;
+    flex-direction: row !important;
     justify-content: flex-end;
   }
 

@@ -10,142 +10,145 @@
     <title>Login</title>
   </head>
   <body>
-    <header class="main-header">
-      <nav class="navbar navbar-dark main-navbar navbar-expand-md">
-        <a class="navbar-brand" href="#">
-          <img src="img/logo.png" alt="" class="logo">
-        </a>
+    <div class="main-container">
+      <header class="main-header">
+        <nav class="navbar navbar-dark main-navbar navbar-expand-md">
+          <a class="navbar-brand" href="#">
+            <img src="img/logo.png" alt="" class="logo">
+          </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
           <!-- Contenido que en mobile se colapsa. -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="links-utiles">
-          <span class="links-extra">
-            <ul>
-              <li>
-                <a href="#">Quienes somos</a>
-              </li>
-              <li>
-                <p>|</p>
-              </li>
-              <li>
-                <a href="#">Servicio Tecnico</a>
-              </li>
-              <li>
-                <p>|</p>
-              </li>
-              <li>
-                <a href="#">Monitoreo</a>
-              </li>
-            </ul>
-          </span>
-          <span class="llamenos">
-            <p>Llamenos 0800-888-6666</p>
-          </span>
-          <span class="header-rrss">
-            <ul>
-              <li>
-                <ion-icon name="logo-twitter" size="large"></ion-icon>
-              </li>
-              <li>
-                <ion-icon name="logo-instagram" size="large"></ion-icon>
-              </li>
-              <li>
-                <ion-icon name="logo-facebook" size="large"></ion-icon>
-              </li>
-            </ul>
-          </span>
-      </div>
-          <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown nav-cuenta">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Cuenta
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="login.html">Login</a>
-              <a class="dropdown-item" href="registro.html">Registro</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="links-utiles">
+              <span class="links-extra">
+                <ul>
+                  <li>
+                    <a href="#">Quienes somos</a>
+                  </li>
+                  <li>
+                    <p>|</p>
+                  </li>
+                  <li>
+                    <a href="#">Servicio Tecnico</a>
+                  </li>
+                  <li>
+                    <p>|</p>
+                  </li>
+                  <li>
+                    <a href="#">Monitoreo</a>
+                  </li>
+                </ul>
+              </span>
+              <span class="llamenos">
+                <p>Llamenos 0800-888-6666</p>
+              </span>
+              <span class="header-rrss">
+                <ul>
+                  <li>
+                    <ion-icon name="logo-twitter" size="large"></ion-icon>
+                  </li>
+                  <li>
+                    <ion-icon name="logo-instagram" size="large"></ion-icon>
+                  </li>
+                  <li>
+                    <ion-icon name="logo-facebook" size="large"></ion-icon>
+                  </li>
+                </ul>
+              </span>
             </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Kits alarmas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Camaras</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Anti incendios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Accesorios</a>
-          </li>
-      </ul>
-        </div>
-      </nav>
-    </header>
-    <div id="login">
-        <h3 class="text-center text-white pt-5">Iniciar sesion</h3>
-        <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
-                            <div class="form-group">
-                                <label for="username" class="text-info">Nombre de usuario:</label><br>
-                                <input type="text" name="username" id="username" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Contraseña:</label><br>
-                                <input type="text" name="password" id="password" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="remember-me" class="text-info"><span>Recordarme</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Login">
-                            </div>
-                            <div id="register-link" class="text-right">
-                                <a href="#" class="text-info">Registro</a>
-                        </form>
-                        <div class="forget">
-                          <a class="#"href="#">Olvidó su contraseña?</a>
-                        </div>
-                    </div>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown nav-cuenta">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Cuenta
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="login.html">Login</a>
+                  <a class="dropdown-item" href="registro.html">Registro</a>
                 </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Kits alarmas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Camaras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Anti incendios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Accesorios</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <div id="login">
+        <h3 class="text-center text-black pt-5">Iniciar sesion</h3>
+        <div class="container">
+          <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+              <div id="login-box" class="col-md-12">
+                <form id="login-form" class="form" action="" method="post">
+                  <div class="form-group">
+                    <label for="username" class="text-info">Nombre de usuario:</label><br>
+                    <input type="text" name="username" id="username" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="text-info">Contraseña:</label><br>
+                    <input type="text" name="password" id="password" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="remember-me" class="text-info"><span>Recordarme</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                    <input type="submit" name="submit" class="btn btn-info btn-md" value="Login">
+                  </div>
+                  <div id="register-link" class="text-right">
+                    <a href="#" class="text-info">Registro</a>
+                  </form>
+                  <div class="forget">
+                    <a class="#"href="#">Olvidó su contraseña?</a>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+        </div>
+        <footer class="main-footer">
+          <div class="logo-container-footer">
+            <img src="img/logo.png" alt="" class="logo-footer">
+          </div>
+          <div class="informacion-contacto">
+            <ul>
+              <li>
+                <p class="footer-info">Av. Corrientes 5067 1º Piso Of. 5. C1414AJD. C.A.B.A.</p>
+              </li>
+              <li>
+                <p class="footer-info">Tel/Fax: (011) 4555-5555 / (011) 4856-5573</p>
+              </li>
+              <li>
+                <p class="footer-info">Email: info@helsecurity.com</p>
+              </li>
+            </ul>
+          </div>
+          <span class="footer-rrss ml-auto">
+            <ul>
+              <li>
+                <ion-icon name="logo-twitter" size="large" class="rrss-verde"></ion-icon>
+              </li>
+              <li>
+                <ion-icon name="logo-instagram" size="large" class="rrss-verde"></ion-icon>
+              </li>
+              <li>
+                <ion-icon name="logo-facebook" size="large" class="rrss-verde"></ion-icon>
+              </li>
+            </ul>
+          </span>
+        </footer>
     </div>
-    <footer class="main-footer">
-      <div class="logo-container-footer">
-        <img src="img/logo.png" alt="" class="logo-footer">
-      </div>
-      <div class="informacion-contacto">
-        <ul>
-          <li>
-            <p class="footer-info">Av. Corrientes 5067 1º Piso Of. 5. C1414AJD. C.A.B.A.</p>
-          </li>
-          <li>
-            <p class="footer-info">Tel/Fax: (011) 4555-5555 / (011) 4856-5573</p>
-          </li>
-          <li>
-            <p class="footer-info">Email: info@helsecurity.com</p>
-          </li>
-        </ul>
-      </div>
-      <span class="footer-rrss ml-auto">
-        <ul>
-          <li>
-            <ion-icon name="logo-twitter" size="large" class="rrss-verde"></ion-icon>
-          </li>
-          <li>
-            <ion-icon name="logo-instagram" size="large" class="rrss-verde"></ion-icon>
-          </li>
-          <li>
-            <ion-icon name="logo-facebook" size="large" class="rrss-verde"></ion-icon>
-          </li>
-        </ul>
-      </span>
-    </footer>
   </body>
 
     <!-- JavaScript general -->
