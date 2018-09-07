@@ -6,10 +6,9 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #919191;
   height: 100vh;
   font-family: sans-serif;
-  color:grey;
+  color: #404041;
 }
 
 .forget {
@@ -40,6 +39,7 @@ body {
 
 .text-info {
     color: grey!important;
+  }
 
 
 
