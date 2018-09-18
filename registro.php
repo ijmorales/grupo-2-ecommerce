@@ -8,7 +8,7 @@
   </head>
   <!-- Comienzo del formulario -->
   <body>
-      <div class="main-container-registro">
+      <div class="main-container-registro  flex-column container">
         <header class="main-header">
           <nav class="navbar navbar-dark main-navbar navbar-expand-md">
             <a class="navbar-brand" href="home.html">
@@ -90,62 +90,41 @@
               <h1>Alta de usuario</h1>
               <p>Complete con sus datos para crear un usuario</p>
               <hr>
-              <label for="nombre"><b>Nombre</b></label>
-              <input type="text" placeholder="Ingrese su nombre" name="nombre" required>
+              <div class="form-group">
+                <label for="nombre"><b>Nombre</b></label>
+                <input class="form-control" type="text" placeholder="Ingrese su nombre" name="nombre" required>
+              </div>
 
+              <div class="form-grup">
               <label for="apellido"><b>Apellido</b></label>
-              <input type="text" placeholder="Ingrese su apellido" name="apellido" required>
+              <input class="form-control" type="text" placeholder="Ingrese su apellido" name="apellido" required>
+              </div>
 
-              <label for="email"><b>Email</b></label>
-              <input type="text" placeholder="Ingrese su email" name="email" required>
+              <div class="form-group">
+                <label for="email"><b>Email</b></label>
+                <input class="form-control" type="text" placeholder="Ingrese su email" name="email" required>
+              </div>
 
-              <label for="psw"><b>Password</b></label>
-              <input type="password" placeholder="Ingrese su password" name="psw" required>
+              <div class="form-group">
+                <label for="psw"><b>Password</b></label>
+                <input class="form-control" type="password" placeholder="Ingrese su password" name="psw" required>
+              </div>
 
-              <label for="psw-repetir"><b>Repetir Password</b></label>
-              <input type="password" placeholder="Repita su password" name="psw-repeat" required>
+              <div class="form-group">
+                <label for="psw-repetir"><b>Repetir Password</b></label>
+                <input class="form-control" type="password" placeholder="Repita su password" name="psw-repeat" required>
+              </div>
               <hr>
-
               <p>Al ingresar sus datos usted acepta nuestros <a href="#">Términos y condiciones de privacidad</a>.</p>
               <button type="submit" class="registrobtn">Crear Cuenta</button>
             </div>
 
             <div class="container signin">
-              <p>Ya tiene una cuenta? <a href="#">Login</a>.</p>
+              <p class="ya-tiene-cuenta">Ya tiene una cuenta? <a href="#">Login</a>.</p>
             </div>
           </form>
         </div>
-      <footer class="main-footer">
-        <div class="logo-container-footer">
-          <img src="img/logo.png" alt="" class="logo-footer">
-        </div>
-        <div class="informacion-contacto">
-          <ul>
-            <li>
-              <p class="footer-info">Av. Corrientes 5067 1º Piso Of. 5. C1414AJD. C.A.B.A.</p>
-            </li>
-            <li>
-              <p class="footer-info">Tel/Fax: (011) 4555-5555 / (011) 4856-5573</p>
-            </li>
-            <li>
-              <p class="footer-info">Email: info@helsecurity.com</p>
-            </li>
-          </ul>
-        </div>
-        <span class="footer-rrss ml-auto">
-          <ul>
-            <li>
-              <ion-icon name="logo-twitter" size="large" class="rrss-verde"></ion-icon>
-            </li>
-            <li>
-              <ion-icon name="logo-instagram" size="large" class="rrss-verde"></ion-icon>
-            </li>
-            <li>
-              <ion-icon name="logo-facebook" size="large" class="rrss-verde"></ion-icon>
-            </li>
-          </ul>
-        </span>
-      </footer>
+        <?php include_once("footer.php") ?>
       </div>
 
   </body>

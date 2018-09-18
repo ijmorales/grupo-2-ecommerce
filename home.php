@@ -8,83 +8,9 @@
   </head>
   <body>
     <div class="main-container">
+      <!-- HEADER -->
+      <?php include_once("header.php") ?>
       <!--  -->
-      <header class="main-header">
-        <nav class="navbar navbar-dark main-navbar navbar-expand-md">
-          <a class="navbar-brand" href="home.html">
-            <img src="img/logo.png" alt="" class="logo">
-          </a>
-
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-            <!-- Contenido que en mobile se colapsa. -->
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div class="links-utiles">
-            <span class="links-extra">
-              <ul>
-                <li>
-                  <a href="#">Quienes somos</a>
-                </li>
-                <li>
-                  <p>|</p>
-                </li>
-                <li>
-                  <a href="#">Servicio Tecnico</a>
-                </li>
-                <li>
-                  <p>|</p>
-                </li>
-                <li>
-                  <a href="#">Monitoreo</a>
-                </li>
-              </ul>
-            </span>
-            <span class="llamenos">
-              <p>Llamenos 0800-888-6666</p>
-            </span>
-            <span class="header-rrss">
-              <ul>
-                <li>
-                  <ion-icon name="logo-twitter" size="large"></ion-icon>
-                </li>
-                <li>
-                  <ion-icon name="logo-instagram" size="large"></ion-icon>
-                </li>
-                <li>
-                  <ion-icon name="logo-facebook" size="large"></ion-icon>
-                </li>
-              </ul>
-            </span>
-        </div>
-            <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown nav-cuenta">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Cuenta
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="login.html">Login</a>
-                <a class="dropdown-item" href="registro.html">Registro</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Kits alarmas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Camaras</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Anti incendios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Accesorios</a>
-            </li>
-        </ul>
-          </div>
-        </nav>
-      </header>
-
         <div class="promo-text">
           <h2 class="titulo-promo">Promociones</h2>
         </div>
@@ -204,39 +130,8 @@
               </div>
             </div>
           </div>
-
           <!-- Footer -->
-          <footer class="main-footer">
-        <div class="logo-container-footer">
-          <img src="img/logo.png" alt="" class="logo-footer">
-        </div>
-        <div class="informacion-contacto">
-          <ul>
-            <li>
-              <p class="footer-info">Av. Corrientes 5067 1º Piso Of. 5. C1414AJD. C.A.B.A.</p>
-            </li>
-            <li>
-              <p class="footer-info">Tel/Fax: (011) 4209-3622 / (011) 6382-3399</p>
-            </li>
-            <li>
-              <p class="footer-info">Email: info@helsecurity.com</p>
-            </li>
-          </ul>
-        </div>
-        <span class="footer-rrss ml-auto">
-          <ul>
-            <li>
-              <ion-icon name="logo-twitter" size="large" class="rrss-verde"></ion-icon>
-            </li>
-            <li>
-              <ion-icon name="logo-instagram" size="large" class="rrss-verde"></ion-icon>
-            </li>
-            <li>
-              <ion-icon name="logo-facebook" size="large" class="rrss-verde"></ion-icon>
-            </li>
-          </ul>
-        </span>
-      </footer>
+      <?php include_once("footer.php") ?>
     </div> <!-- Aca cierra el div del main-container  -->
 
     <!-- JavaScript iconos -->
