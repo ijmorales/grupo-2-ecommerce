@@ -10,7 +10,6 @@
         <a class="navbar-brand" href="home.php">
           <img src="img/logo.png" alt="" class="logo">
         </a>
-
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
