@@ -42,13 +42,13 @@
           <span class="header-rrss">
             <ul>
               <li>
-                <ion-icon name="logo-twitter" size="large"></ion-icon>
+                <a href="https://twitter.com/"><ion-icon name="logo-twitter" size="large"></ion-icon></a>
               </li>
               <li>
-                <ion-icon name="logo-instagram" size="large"></ion-icon>
+                <a href="https://instagram.com/"><ion-icon name="logo-instagram" size="large"></ion-icon></a>
               </li>
               <li>
-                <ion-icon name="logo-facebook" size="large"></ion-icon>
+                <a href="https://facebook.com/"><ion-icon name="logo-facebook" size="large"></ion-icon></a>
               </li>
             </ul>
           </span>
