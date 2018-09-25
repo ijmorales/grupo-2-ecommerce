@@ -10,7 +10,6 @@
         <a class="navbar-brand" href="home.php">
           <img src="img/logo.png" alt="" class="logo">
         </a>
-
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,13 +42,13 @@
           <span class="header-rrss">
             <ul>
               <li>
-                <ion-icon name="logo-twitter" size="large"></ion-icon>
+                <a href="https://twitter.com/"><ion-icon name="logo-twitter" size="large"></ion-icon></a>
               </li>
               <li>
-                <ion-icon name="logo-instagram" size="large"></ion-icon>
+                <a href="https://instagram.com/"><ion-icon name="logo-instagram" size="large"></ion-icon></a>
               </li>
               <li>
-                <ion-icon name="logo-facebook" size="large"></ion-icon>
+                <a href="https://facebook.com/"><ion-icon name="logo-facebook" size="large"></ion-icon></a>
               </li>
             </ul>
           </span>

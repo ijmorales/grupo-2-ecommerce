@@ -354,6 +354,12 @@ article.productos{
 
 /* ESTILOS: DEL REGISTRO */
 
+.is-invalid{
+  margin-bottom: 5px !important;
+  border: solid 1px !important;
+  border-color: #dc3545 !important;
+}
+
 .main-container-registro{
   max-width: 1140px !important;
 }

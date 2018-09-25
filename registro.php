@@ -1,3 +1,31 @@
+<?php
+  require_once("funciones.php");
+  $camposDefault = [
+    "nombre" => "",
+    "apellido" => "",
+    "email" => "",
+    "psw" => "",
+    "psw-repeat" => ""
+  ];
+  $errores = [];
+  if($_POST){
+    $errores = validar_registracion($_POST);
+    if(empty($errores)){
+      header("Location:home.php");exit;
+    }else{
+      // Chequea que no haya errores para ese campo, y lo agrega al autocompletado.
+      // Los campos de contraseña no se autocompletan por seguridad.
+      foreach($_POST as $campo => $valor){
+        if($campo != "psw" && $campo != "psw-repeat"){
+          if(isset($errores["$campo"]) == false){ // Si NO existe error en esa posicion.
+            $camposDefault["$campo"] = $valor;
+          }
+        }
+      }
+    }
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -9,110 +37,71 @@
   <!-- Comienzo del formulario -->
   <body>
       <div class="main-container-registro  flex-column container">
-        <header class="main-header">
-          <nav class="navbar navbar-dark main-navbar navbar-expand-md">
-            <a class="navbar-brand" href="home.html">
-              <img src="img/logo.png" alt="" class="logo">
-            </a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-              <!-- Contenido que en mobile se colapsa. -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="links-utiles">
-              <span class="links-extra">
-                <ul>
-                  <li>
-                    <a href="#">Quienes somos</a>
-                  </li>
-                  <li>
-                    <p>|</p>
-                  </li>
-                  <li>
-                    <a href="#">Servicio Tecnico</a>
-                  </li>
-                  <li>
-                    <p>|</p>
-                  </li>
-                  <li>
-                    <a href="#">Monitoreo</a>
-                  </li>
-                </ul>
-              </span>
-              <span class="llamenos">
-                <p>Llamenos 0800-888-6666</p>
-              </span>
-              <span class="header-rrss">
-                <ul>
-                  <li>
-                    <ion-icon name="logo-twitter" size="large"></ion-icon>
-                  </li>
-                  <li>
-                    <ion-icon name="logo-instagram" size="large"></ion-icon>
-                  </li>
-                  <li>
-                    <ion-icon name="logo-facebook" size="large"></ion-icon>
-                  </li>
-                </ul>
-              </span>
-          </div>
-              <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown nav-cuenta">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Cuenta
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="login.html">Login</a>
-                  <a class="dropdown-item" href="registro.html">Registro</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Kits alarmas</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Camaras</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Anti incendios</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Accesorios</a>
-              </li>
-          </ul>
-            </div>
-          </nav>
-        </header>
+        <?php include_once("header.php") ?>
         <div class="container form-container">
-            <form action="action_page.php">
+            <form action="registro.php" method="post">
               <div class="flex-container">
               <h1>Alta de usuario</h1>
               <p>Complete con sus datos para crear un usuario</p>
               <hr>
               <div class="form-group">
                 <label for="nombre"><b>Nombre</b></label>
-                <input class="form-control" type="text" placeholder="Ingrese su nombre" name="nombre" required>
+                <?php if(isset($errores["nombre"])): ?>
+                  <input class="form-control is-invalid" type="text" placeholder="Ingrese su nombre" name="nombre" required>
+                  <div class="invalid-feedback">
+                    <?=$errores["nombre"]?>
+                  </div>
+                <?php else: ?>
+                  <input class="form-control" type="text" placeholder="Ingrese su nombre" name="nombre" value="<?=$camposDefault["nombre"]?>" required>
+                <?php endif; ?>
               </div>
 
-              <div class="form-grup">
+              <div class="form-group">
               <label for="apellido"><b>Apellido</b></label>
-              <input class="form-control" type="text" placeholder="Ingrese su apellido" name="apellido" required>
+              <?php if(isset($errores["apellido"])): ?>
+                <input class="form-control is-invalid" type="text" placeholder="Ingrese su apellido" name="apellido" required>
+                <div class="invalid-feedback">
+                  <?=$errores["apellido"]?>
+                </div>
+              <?php else: ?>
+                <input class="form-control" type="text" placeholder="Ingrese su apellido" name="apellido" value="<?=$camposDefault["apellido"]?>" required>
+              <?php endif; ?>
               </div>
 
               <div class="form-group">
                 <label for="email"><b>Email</b></label>
-                <input class="form-control" type="text" placeholder="Ingrese su email" name="email" required>
+                <?php if(isset($errores["email"])): ?>
+                  <input class="form-control is-invalid" type="text" placeholder="Ingrese su email" name="email" required>
+                  <div class="invalid-feedback">
+                    <?=$errores["email"]?>
+                  </div>
+                <?php else: ?>
+                  <input class="form-control" type="text" placeholder="Ingrese su email" name="email" value="<?=$camposDefault["email"]?>" required>
+                <?php endif; ?>
               </div>
 
               <div class="form-group">
                 <label for="psw"><b>Password</b></label>
-                <input class="form-control" type="password" placeholder="Ingrese su password" name="psw" required>
+                <?php if(isset($errores["psw"])): ?>
+                  <input class="form-control is-invalid" type="password" placeholder="Ingrese su password" name="psw" required>
+                  <div class="invalid-feedback">
+                    <?=$errores["psw"]?>
+                  </div>
+                <?php else: ?>
+                  <input class="form-control" type="password" placeholder="Ingrese su password" name="psw" value="" required>
+                <?php endif; ?>
               </div>
 
               <div class="form-group">
-                <label for="psw-repetir"><b>Repetir Password</b></label>
-                <input class="form-control" type="password" placeholder="Repita su password" name="psw-repeat" required>
+                <label for="psw-repeat"><b>Repetir Password</b></label>
+                <?php if(isset($errores["psw-repeat"])): ?>
+                  <input class="form-control is-invalid" type="password" placeholder="Repita su password" name="psw-repeat" required>
+                  <div class="invalid-feedback">
+                    <?=$errores["psw-repeat"]?>
+                  </div>
+                <?php else: ?>
+                  <input class="form-control" type="password" placeholder="Repita su password" name="psw-repeat" value="" required>
+                <?php endif; ?>
               </div>
               <hr>
               <p>Al ingresar sus datos usted acepta nuestros <a href="#">Términos y condiciones de privacidad</a>.</p>
