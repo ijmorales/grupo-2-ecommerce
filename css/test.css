@@ -2,11 +2,3 @@
   display: flex;
   width: 50%;
 }
-
-.cajita{
-  text-align: center;
-  width: 40%;
-  background-color: blue;
-  color: white;
-  margin-bottom: 1rem;
-}
