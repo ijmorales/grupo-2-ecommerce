@@ -1,8 +1,6 @@
 <?php
-define("USUARIOS_JSON", "usuarios.json");
-define("UPLOADS_DIR", "uploads");
 
-function validar_registracion($datos, $archivos){
+function validar_registracion($datos){
   $errores = [];
   // Remueve espacios de más en todos los campos excepto en las contraseñas.
   foreach($datos as $key => $value){
@@ -67,105 +65,16 @@ function validar_registracion($datos, $archivos){
   }
 
   // Valido si el email es correcto. Solo si no detectamos que esta en blanco.
-  // Tambien valido que no este repetido.
   if(filter_var($datos["email"], FILTER_VALIDATE_EMAIL) == false && empty($errores["email"])){
     $errores["email"] = "El email es incorrecto.";
-  }elseif(buscar_por_email($datos["email"]) != NULL){
-    $errores["email"] = "El email ya se encuentra registrado.";
   }
 
-  // Chequea que haya archivos
-  if($archivos){
-    $avatar = $archivos["avatar"];
-    // Chequea que se haya subido bien.
-    if($avatar["error"] === UPLOAD_ERR_OK){
-      $ext = pathinfo($avatar["name"], PATHINFO_EXTENSION);
-      if($ext != "jpg" && $ext != "jpeg" && $ext != "png"){
-        $errores["avatar"] = "La extensión del archivo no es correcta.";
-      }elseif($avatar["size"] > (5 * 1024 * 1024)){
-        $errores["avatar"] = "El archivo es demasiado pesado.";
-      }
-    }else{
-      $errores["avatar"] = "Hubo un error en la carga del archivo. " . $avatar["error"];
-    }
-  }
-  // Valido la extension y el peso del avatar.
-  // Chequea que no pese mas de 5mb.
 
   return $errores;
 }
 
 function validar_campo_blanco($campo){
   return !($campo == "" || ctype_space($campo));
-}
-
-function armar_usuario($datos, $archivos){
-   return [
-    "id" => generar_id(),
-    "nombre" => trim($datos["nombre"]),
-    "apellido" => trim($datos["apellido"]),
-    "password" => password_hash($datos["psw"], PASSWORD_DEFAULT),
-    "email" => trim($datos["email"]),
-    "avatar" => procesar_avatar($archivos["avatar"])
-  ];
-}
-
-function crear_usuario($usuario){
-  $usuarios = file_get_contents("usuarios.json");
-  $usuarios = json_decode($usuarios, true);
-
-  if($usuarios === NULL){
-    $usuarios = [];
-  }
-
-  $usuarios[] = $usuario;
-  $usuarios = json_encode($usuarios);
-
-  file_put_contents(USUARIOS_JSON, $usuarios);
-}
-
-// Recibe un array con los datos del avatar.
-function procesar_avatar($avatar){
-  $ext = pathinfo($avatar["name"], PATHINFO_EXTENSION);
-  $archivoTemporal = $avatar["tmp_name"];
-  $archivoFinal = UPLOADS_DIR . "/" . "avatars" . "/" . $avatar["name"];
-  echo "<pre>";
-  move_uploaded_file($archivoTemporal, $archivoFinal);
-
-  // Retorna la ubicacion del archivo final, para poder usarlo.
-  return $avatar["name"];
-}
-
-function traer_usuarios(){
-  return json_decode(file_get_contents(USUARIOS_JSON), true);
-}
-
-function buscar_por_email($email){
-  $usuarios = traer_usuarios();
-  foreach($usuarios as $usuario){
-    if($usuario["email"] == $email){
-      return $usuario;
-    }
-  }
-  return null;
-}
-
-function buscar_por_id($id){
-  $usuarios = traer_usuarios();
-  foreach($usuarios as $usuario){
-    if($usuario["id"] == $id){
-      return $usuario;
-    }
-  }
-
-  return null;
-}
-
-function generar_id(){
-  $usuarios = traer_usuarios();
-  // Obtengo el id del ultimo usuario del array. Asumo que esta ordenado.
-  $lastId = end($usuarios)["id"];
-  return $lastId + 1;
 }
 
 ?>
