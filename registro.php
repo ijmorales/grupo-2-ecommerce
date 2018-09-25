@@ -9,12 +9,16 @@
   ];
   $errores = [];
   if($_POST){
-    $errores = validar_registracion($_POST);
+    $errores = validar_registracion($_POST, $_FILES);
     if(empty($errores)){
+      // var_dump($datosUsuario);exit;
+      $usuario = armar_usuario($_POST, $_FILES);
+      crear_usuario($usuario);
       header("Location:home.php");exit;
     }else{
       // Chequea que no haya errores para ese campo, y lo agrega al autocompletado.
       // Los campos de contraseña no se autocompletan por seguridad.
+      var_dump($errores);
       foreach($_POST as $campo => $valor){
         if($campo != "psw" && $campo != "psw-repeat"){
           if(isset($errores["$campo"]) == false){ // Si NO existe error en esa posicion.
@@ -39,7 +43,7 @@
       <div class="main-container-registro  flex-column container">
         <?php include_once("header.php") ?>
         <div class="container form-container">
-            <form action="registro.php" method="post">
+            <form action="registro.php" method="post" enctype="multipart/form-data">
               <div class="flex-container">
               <h1>Alta de usuario</h1>
               <p>Complete con sus datos para crear un usuario</p>
@@ -103,6 +107,25 @@
                   <input class="form-control" type="password" placeholder="Repita su password" name="psw-repeat" value="" required>
                 <?php endif; ?>
               </div>
+
+              <div class="input-group">
+                <label class="avatar-label" for="avatar"><b>Avatar</b></label>
+                <input class="avatar-input" type="file" name="avatar" value="messi.pdf">
+                <?php if(isset($errores["avatar"])): ?>
+                <div class="invalid-feedback" style="display: block !important">
+                  <?=$errores["avatar"]?>
+                </div>
+                <?php endif; ?>
+              </div>
+              <!-- Input de Bootstrap, hay que agregarle JS para que funcione bien -->
+              <!-- <div class="form-group">
+                <label for=""><b>Avatar</b></label>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="avatar" aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="avatar">Elegir archivo</label>
+                </div>
+              </div> -->
+
               <hr>
               <p>Al ingresar sus datos usted acepta nuestros <a href="#">Términos y condiciones de privacidad</a>.</p>
               <button type="submit" class="registrobtn">Crear Cuenta</button>
