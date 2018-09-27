@@ -86,7 +86,7 @@ function validar_registracion($datos, $archivos){
         $errores["avatar"] = "El archivo es demasiado pesado.";
       }
     }else{
-      $errores["avatar"] = "Hubo un error en la carga del archivo. " . $avatar["error"];
+      $errores["avatar"] = "Hubo un error en la carga del archivo. Codigo: " . $avatar["error"] . ".";
     }
   }
   // Valido la extension y el peso del avatar.
@@ -106,13 +106,12 @@ function armar_usuario($datos, $archivos){
     "apellido" => trim($datos["apellido"]),
     "password" => password_hash($datos["psw"], PASSWORD_DEFAULT),
     "email" => trim($datos["email"]),
-    "avatar" => procesar_avatar($archivos["avatar"])
+    "avatar" => procesar_avatar($archivos["avatar"], $datos["email"])
   ];
 }
 
 function crear_usuario($usuario){
-  $usuarios = file_get_contents("usuarios.json");
-  $usuarios = json_decode($usuarios, true);
+  $usuarios = traer_usuarios();
 
   if($usuarios === NULL){
     $usuarios = [];
@@ -124,20 +123,24 @@ function crear_usuario($usuario){
   file_put_contents(USUARIOS_JSON, $usuarios);
 }
 
-// Recibe un array con los datos del avatar.
-function procesar_avatar($avatar){
+// Recibe un array con los datos del avatar y un string con el nombre final del archivo (sin extension).
+function procesar_avatar($avatar, $nombreArchivo){
   $ext = pathinfo($avatar["name"], PATHINFO_EXTENSION);
   $archivoTemporal = $avatar["tmp_name"];
-  $archivoFinal = UPLOADS_DIR . "/" . "avatars" . "/" . $avatar["name"];
-  echo "<pre>";
+  $archivoFinal = UPLOADS_DIR . "/" . "avatars" . "/" . $nombreArchivo . "." . $ext;
+  // echo "<pre>";
   move_uploaded_file($archivoTemporal, $archivoFinal);
 
   // Retorna la ubicacion del archivo final, para poder usarlo.
-  return $avatar["name"];
+  return $nombreArchivo . "." . $ext;
 }
 
 function traer_usuarios(){
-  return json_decode(file_get_contents(USUARIOS_JSON), true);
+  $json = file_get_contents(USUARIOS_JSON);
+  if($json == ""){
+    return null;
+  }
+  return json_decode($json, true);
 }
 
 function buscar_por_email($email){
@@ -157,12 +160,14 @@ function buscar_por_id($id){
       return $usuario;
     }
   }
-
   return null;
 }
 
 function generar_id(){
   $usuarios = traer_usuarios();
+  if($usuarios === null){
+    return 1;
+  }
   // Obtengo el id del ultimo usuario del array. Asumo que esta ordenado.
   $lastId = end($usuarios)["id"];
   return $lastId + 1;

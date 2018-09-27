@@ -18,9 +18,9 @@
     }else{
       // Chequea que no haya errores para ese campo, y lo agrega al autocompletado.
       // Los campos de contraseña no se autocompletan por seguridad.
-      var_dump($errores);
+      // var_dump($errores);
       foreach($_POST as $campo => $valor){
-        if($campo != "psw" && $campo != "psw-repeat"){
+        if($campo != "psw" && $campo != "psw-repeat" && $campo != "avatar"){
           if(isset($errores["$campo"]) == false){ // Si NO existe error en esa posicion.
             $camposDefault["$campo"] = $valor;
           }
