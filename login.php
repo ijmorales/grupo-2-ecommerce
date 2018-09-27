@@ -1,3 +1,16 @@
+<?php
+  require_once("./funciones.php");
+
+  // Si viene por POST
+  if($_POST){
+    $errores = verificarLogin($_POST);
+    if(empty($errores)){
+      loguear($_POST["email"]);
+      header("Location:home.php");exit;
+    }
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -17,13 +30,32 @@
             <div id="login-box" class="col-md-12">
               <form id="login-form" class="form" action="" method="post">
                 <div class="form-group">
-                  <label for="username" class="text-info">Nombre de usuario:</label><br>
-                  <input type="text" name="username" id="username" class="form-control">
+                  <label for="email" class="text-info">Email:</label><br>
+                  <?php if(isset($errores["email"])): ?>
+                    <input type="email" name="email" id="email" class="form-control is-invalid">
+                    <div class="invalid-feedback">
+                      <?=$errores["email"]?>
+                    </div>
+                  <?php else: ?>
+                    <input type="email" name="email" id="email" class="form-control">
+                  <?php endif; ?>
                 </div>
                 <div class="form-group">
-                  <label for="password" class="text-info">Contraseña:</label><br>
-                  <input type="text" name="password" id="password" class="form-control">
+                  <label for="psw" class="text-info">Contraseña:</label><br>
+                  <?php if(isset($errores["psw"])): ?>
+                    <input type="password" name="psw" id="psw" class="form-control is-invalid">
+                    <div class="invalid-feedback">
+                      <?=$errores["psw"]?>
+                    </div>
+                  <?php else:?>
+                    <input type="password" name="psw" id="psw" class="form-control">
+                  <?php endif; ?>
                 </div>
+                <?php if(isset($errores["general"])): ?>
+                <div class="row alert alert-danger" role="alert">
+                  <?=$errores["general"]?>
+                </div>
+                <?php endif; ?>
                 <div class="form-group">
                   <label for="remember-me" class="text-info"><span>Recordarme</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
                   <input type="submit" name="submit" class="btn btn-info btn-md" value="Login">

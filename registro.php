@@ -14,7 +14,7 @@
       // var_dump($datosUsuario);exit;
       $usuario = armar_usuario($_POST, $_FILES);
       crear_usuario($usuario);
-      header("Location:home.php");exit;
+      header("Location:login.php");exit;
     }else{
       // Chequea que no haya errores para ese campo, y lo agrega al autocompletado.
       // Los campos de contraseña no se autocompletan por seguridad.

@@ -1,3 +1,11 @@
+<?php
+require_once("funciones.php");
+$usuario = "";
+if(estaLogueado()){
+  $usuario = traerUsuarioLogueado();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -58,10 +66,17 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Cuenta
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="login.php">Login</a>
-              <a class="dropdown-item" href="registro.php">Registro</a>
-            </div>
+            <?php if($usuario): ?>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="mi-cuenta.php">Mi Cuenta</a>
+                <a class="dropdown-item" href="logout.php">Logout</a>
+              </div>
+            <?php else: ?>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="login.php">Login</a>
+                <a class="dropdown-item" href="registro.php">Registro</a>
+              </div>
+            <?php endif; ?>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Kits alarmas</a>

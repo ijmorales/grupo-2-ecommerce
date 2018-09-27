@@ -1,6 +1,9 @@
 <?php
+// Constantes de la ubicacion de los archivos.
 define("USUARIOS_JSON", "usuarios.json");
 define("UPLOADS_DIR", "uploads");
+
+session_start();
 
 function validar_registracion($datos, $archivos){
   $errores = [];
@@ -171,6 +174,39 @@ function generar_id(){
   // Obtengo el id del ultimo usuario del array. Asumo que esta ordenado.
   $lastId = end($usuarios)["id"];
   return $lastId + 1;
+}
+
+function verificarLogin($datos){
+  $errores = [];
+  $errorGeneral = "Los datos ingresados no son correctos.";
+  $usuario = buscar_por_email($datos["email"]);
+
+  // Chequea que el email exista. Si existe valida los campos, sino directamente retorna error.
+  if($datos["email"] == ""){
+    $errores["email"] = "El email no puede estar vacio.";
+  }elseif($usuario == null){
+    $errores["general"] = $errorGeneral;
+  }else{
+    // Valida que los campos no esten vacios.
+    if($datos["psw"] == ""){
+      $errores["psw"] = "La contraseña no debe estar vacia.";
+    }elseif(password_verify($datos["psw"], $usuario["password"]) == false){
+      $errores["general"] = $errorGeneral;
+    }
+  }
+  return $errores;
+}
+
+function loguear($email){
+  $_SESSION["usuarioLogueado"] = $email;
+}
+
+function estaLogueado(){
+  return isset($_SESSION["usuarioLogueado"]);
+}
+
+function traerUsuarioLogueado(){
+  return buscar_por_email($_SESSION["usuarioLogueado"]);
 }
 
 ?>

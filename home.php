@@ -1,3 +1,10 @@
+<?php
+require_once("funciones.php");
+if(estaLogueado()){
+  $usuario = traerUsuarioLogueado();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
