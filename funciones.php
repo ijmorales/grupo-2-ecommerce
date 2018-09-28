@@ -12,13 +12,13 @@ function validar_registracion($datos, $archivos){
     if($key == "psw" || $key == "psw-repetir"){
       continue;
     }
-    $data["$key"]= trim($value);
+    $datos[$key]= trim($value);
   }
 
   // Valido espacios en blanco.
   foreach($datos as $campo => $value){
     if(validar_campo_blanco($value) == false){
-      $errores["$campo"] = "El campo no debe estar vacio.";
+      $errores[$campo] = "El campo no debe estar vacio.";
     }
   }
 
@@ -30,15 +30,18 @@ function validar_registracion($datos, $archivos){
 
   // Chequeo que no hayan dado error por estar en blanco. Si no estan en blanco, sigo.
   if(empty($erorres["nombre"]) && empty($errores["apellido"])){
-    // Chequeo la longitud de los 2 campos.
+    // Valido el Nombre
     if(strlen($nombre) < 3 || strlen($nombre) > 50){
       $errores["nombre"] = "El nombre debe contener entre 3 y 50 caracteres.";
-    }elseif(strlen($apellido) < 3 || strlen($nombre) > 50){
-      $errores["apellido"] = "El apellido debe contener entre 3 y 50 caracteres.";
     }elseif(!ctype_alpha($nombre)){
       $errores["nombre"] = "El nombre debe contener solo letras.";
-    }elseif(!ctype_alpha($apellido)){
+    }
+
+    // Valido el Apellido
+    if(!ctype_alpha($apellido)){
       $errores["apellido"] = "El apellido debe contener solo letras.";
+    }elseif(strlen($apellido) < 3 || strlen($nombre) > 50){
+      $errores["apellido"] = "El apellido debe contener entre 3 y 50 caracteres.";
     }
   }
 
@@ -50,16 +53,17 @@ function validar_registracion($datos, $archivos){
   $pw = $datos["psw"];
   $pwRepeat = $datos["psw-repeat"];
   // Primero me aseguro de que la contraseña no este vacia.
+  $pswError = "La contraseña debe contener entre 8 y 14 caracteres y al menos una miniscula, una mayuscula y un numero.";
   if(!empty($errores["psw"])){
     // Si la contraseña esta en blanco, va a estar marcada en $errores.
   }elseif(strlen($pw) < 8 || strlen($pw) > 14){
-    $errores["psw"] = "La contraseña debe contener entre 8 y 14 caracteres.";
+    $errores["psw"] = $pswError;
   }elseif (!preg_match("#[0-9]+#", $pw)) {
-    $errores["psw"] = "La contraseña debe contener al menos un numero.";
+    $errores["psw"] = $pswError;
   }elseif (!preg_match("#[A-Z]+#", $pw)){
-    $errores["psw"] = "La contraseña debe contener al menos una mayuscula.";
+    $errores["psw"] = $pswError;
   }elseif (!preg_match("#[a-z]+#", $pw)){
-    $errores["psw"] = "La contraseña debe contener al menos una minuscula.";
+    $errores["psw"] = $pswError;
   }
 
   // Valido la confirmacion del Password. Si esta vacia, omito agregar otro error.

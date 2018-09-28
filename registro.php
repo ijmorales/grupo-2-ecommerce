@@ -3,22 +3,18 @@
   $camposDefault = [
     "nombre" => "",
     "apellido" => "",
-    "email" => "",
-    "psw" => "",
-    "psw-repeat" => ""
+    "email" => ""
   ];
   $errores = [];
   if($_POST){
     $errores = validar_registracion($_POST, $_FILES);
     if(empty($errores)){
-      // var_dump($datosUsuario);exit;
       $usuario = armar_usuario($_POST, $_FILES);
       crear_usuario($usuario);
       header("Location:login.php");exit;
     }else{
       // Chequea que no haya errores para ese campo, y lo agrega al autocompletado.
       // Los campos de contraseña no se autocompletan por seguridad.
-      // var_dump($errores);
       foreach($_POST as $campo => $valor){
         if($campo != "psw" && $campo != "psw-repeat" && $campo != "avatar"){
           if(isset($errores["$campo"]) == false){ // Si NO existe error en esa posicion.

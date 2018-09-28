@@ -1,8 +1,8 @@
 <?php
 require_once("funciones.php");
-$usuario = "";
+$usuarioLogueado = null;
 if(estaLogueado()){
-  $usuario = traerUsuarioLogueado();
+  $usuarioLogueado = traerUsuarioLogueado();
 }
 ?>
 
@@ -66,7 +66,7 @@ if(estaLogueado()){
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Cuenta
             </a>
-            <?php if($usuario): ?>
+            <?php if($usuarioLogueado): ?>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="mi-cuenta.php">Mi Cuenta</a>
                 <a class="dropdown-item" href="logout.php">Logout</a>

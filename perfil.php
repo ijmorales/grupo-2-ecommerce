@@ -1,16 +1,16 @@
 <?php
   require_once("./funciones.php");
+  // Si viene por GET, chequea que traiga el parametro ID en el querystring.
   if(isset($_GET["id"])){
-    $usuario = buscar_por_id($_GET["id"]);
-
-    if($usuario === null){
-      // Redirige a 404.
+    // Trae al usuario del cual se solicito su perfil
+    $usuarioPerfil = buscar_por_id($_GET["id"]);
+    if($usuarioPerfil === null){
+      // Si no encuentra ese usuario, redirige a 404.
       header("Location:404.php");exit;
     }
-
   }else{
-      // Redirige a 404.
-      header("Location:404.php");exit;
+    // Si viene por GET pero no especifica un ID, redirige a 404.
+    header("Location:404.php");exit;
   }
 ?>
 
@@ -27,13 +27,13 @@
       <section name="usuario" class="container">
         <div class="detalle-usuario-container">
           <div class="perfil-img-container">
-            <img src="uploads/avatars/<?=$usuario["avatar"]?>" alt="" class="avatar-grande">
+            <img src="uploads/avatars/<?=$usuarioPerfil["avatar"]?>" alt="" class="avatar-grande">
           </div>
           <div class="perfil-nombre-container">
-            <?=$usuario["nombre"]?> <?=$usuario["apellido"]?>
+            <?=$usuario["nombre"]?> <?=$usuarioPerfil["apellido"]?>
           </div>
           <div class="perfil-email-container">
-            <p class="perfil-email-texto"><?=$usuario["email"]?></p>
+            <p class="perfil-email-texto"><?=$usuarioPerfil["email"]?></p>
           </div>
           <button class="contactar" type="button" name="contactar">Contactar</button>
         </div>
