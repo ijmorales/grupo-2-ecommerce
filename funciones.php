@@ -4,6 +4,9 @@ define("USUARIOS_JSON", "usuarios.json");
 define("UPLOADS_DIR", "uploads");
 
 session_start();
+if (isset($_COOKIE["email"]) && !isset($_SESSION["usuarioLogueado"])){
+  cookieToSession();
+}
 
 function validar_registracion($datos, $archivos){
   $errores = [];
@@ -12,13 +15,13 @@ function validar_registracion($datos, $archivos){
     if($key == "psw" || $key == "psw-repetir"){
       continue;
     }
-    $datos[$key]= trim($value);
+    $data["$key"]= trim($value);
   }
 
   // Valido espacios en blanco.
   foreach($datos as $campo => $value){
     if(validar_campo_blanco($value) == false){
-      $errores[$campo] = "El campo no debe estar vacio.";
+      $errores["$campo"] = "El campo no debe estar vacio.";
     }
   }
 
@@ -30,18 +33,15 @@ function validar_registracion($datos, $archivos){
 
   // Chequeo que no hayan dado error por estar en blanco. Si no estan en blanco, sigo.
   if(empty($erorres["nombre"]) && empty($errores["apellido"])){
-    // Valido el Nombre
+    // Chequeo la longitud de los 2 campos.
     if(strlen($nombre) < 3 || strlen($nombre) > 50){
       $errores["nombre"] = "El nombre debe contener entre 3 y 50 caracteres.";
-    }elseif(!ctype_alpha($nombre)){
-      $errores["nombre"] = "El nombre debe contener solo letras.";
-    }
-
-    // Valido el Apellido
-    if(!ctype_alpha($apellido)){
-      $errores["apellido"] = "El apellido debe contener solo letras.";
     }elseif(strlen($apellido) < 3 || strlen($nombre) > 50){
       $errores["apellido"] = "El apellido debe contener entre 3 y 50 caracteres.";
+    }elseif(!ctype_alpha($nombre)){
+      $errores["nombre"] = "El nombre debe contener solo letras.";
+    }elseif(!ctype_alpha($apellido)){
+      $errores["apellido"] = "El apellido debe contener solo letras.";
     }
   }
 
@@ -53,17 +53,16 @@ function validar_registracion($datos, $archivos){
   $pw = $datos["psw"];
   $pwRepeat = $datos["psw-repeat"];
   // Primero me aseguro de que la contraseña no este vacia.
-  $pswError = "La contraseña debe contener entre 8 y 14 caracteres y al menos una miniscula, una mayuscula y un numero.";
   if(!empty($errores["psw"])){
     // Si la contraseña esta en blanco, va a estar marcada en $errores.
   }elseif(strlen($pw) < 8 || strlen($pw) > 14){
-    $errores["psw"] = $pswError;
+    $errores["psw"] = "La contraseña debe contener entre 8 y 14 caracteres.";
   }elseif (!preg_match("#[0-9]+#", $pw)) {
-    $errores["psw"] = $pswError;
+    $errores["psw"] = "La contraseña debe contener al menos un numero.";
   }elseif (!preg_match("#[A-Z]+#", $pw)){
-    $errores["psw"] = $pswError;
+    $errores["psw"] = "La contraseña debe contener al menos una mayuscula.";
   }elseif (!preg_match("#[a-z]+#", $pw)){
-    $errores["psw"] = $pswError;
+    $errores["psw"] = "La contraseña debe contener al menos una minuscula.";
   }
 
   // Valido la confirmacion del Password. Si esta vacia, omito agregar otro error.
@@ -211,6 +210,12 @@ function estaLogueado(){
 
 function traerUsuarioLogueado(){
   return buscar_por_email($_SESSION["usuarioLogueado"]);
+}
+function cookieEmail(){
+  return setcookie("email",$_POST["email"], time() + 60*60*24*30);
+}
+function cookieToSession(){
+  return $_SESSION["usuarioLogueado"] = $_COOKIE["email"];
 }
 
 ?>

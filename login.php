@@ -3,6 +3,12 @@
 
   // Si viene por POST
   if($_POST){
+
+    if(isset($_POST["remember-me"]) == "on"){
+      cookieEmail();
+    }
+
+
     $errores = verificarLogin($_POST);
     if(empty($errores)){
       loguear($_POST["email"]);
