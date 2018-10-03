@@ -182,6 +182,8 @@ a:hover{
 /* ESTILOS DEL HOME */
 
 div.main-container{
+  display: flex;
+  flex-flow: column wrap;
   margin: 0 auto;
   max-width: 1180px !important;
   width: 100%;
