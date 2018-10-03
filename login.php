@@ -1,7 +1,5 @@
 <?php
   require_once("./funciones.php");
-
-  // Si viene por POST
   if($_POST){
 
     if(isset($_POST["remember-me"]) == "on"){
@@ -10,6 +8,8 @@
 
 
     $errores = verificarLogin($_POST);
+    echo "<pre>";
+    var_dump($_POST);exit;
     if(empty($errores)){
       loguear($_POST["email"]);
       header("Location:home.php");exit;

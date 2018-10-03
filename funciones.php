@@ -2,6 +2,9 @@
 // Constantes de la ubicacion de los archivos.
 define("USUARIOS_JSON", "usuarios.json");
 define("UPLOADS_DIR", "uploads");
+if (isset($_COOKIE["email"]) && !isset($_SESSION["usuarioLogueado"])){
+  cookieToSession();
+}
 
 session_start();
 if (isset($_COOKIE["email"]) && !isset($_SESSION["usuarioLogueado"])){
@@ -218,4 +221,11 @@ function cookieToSession(){
   return $_SESSION["usuarioLogueado"] = $_COOKIE["email"];
 }
 
+function cookieEmail(){
+  return setcookie("email",$_POST["email"], time() + 60*60*24*30);
+}
+
+function cookieToSession(){
+  return $_SESSION["usuarioLogueado"] = $_COOKIE["email"];
+}
 ?>
