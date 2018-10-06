@@ -2,14 +2,9 @@
 // Constantes de la ubicacion de los archivos.
 define("USUARIOS_JSON", "usuarios.json");
 define("UPLOADS_DIR", "uploads");
-if (isset($_COOKIE["email"]) && !isset($_SESSION["usuarioLogueado"])){
-  cookieToSession();
-}
 
 session_start();
-if (isset($_COOKIE["email"]) && !isset($_SESSION["usuarioLogueado"])){
-  cookieToSession();
-}
+cookieToSession();
 
 function validar_registracion($datos, $archivos){
   $errores = [];
@@ -214,18 +209,15 @@ function estaLogueado(){
 function traerUsuarioLogueado(){
   return buscar_por_email($_SESSION["usuarioLogueado"]);
 }
-function cookieEmail(){
-  return setcookie("email",$_POST["email"], time() + 60*60*24*30);
-}
-function cookieToSession(){
-  return $_SESSION["usuarioLogueado"] = $_COOKIE["email"];
-}
 
-function cookieEmail(){
-  return setcookie("email",$_POST["email"], time() + 60*60*24*30);
+function cookieRecordarme($email){
+  return setcookie("usuarioLogueado", $email, time() + 60*60*24*30);
 }
 
 function cookieToSession(){
-  return $_SESSION["usuarioLogueado"] = $_COOKIE["email"];
+  if(isset($_COOKIES["usuarioLogueado"]) && !(isset($_SESSION["usuarioLogueado"]))){
+    $_SESSION["usuarioLogueado"] = $_COOKIE["usuarioLogueado"];
+  }
 }
+
 ?>
