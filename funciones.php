@@ -221,11 +221,11 @@ function cookieToSession(){
   return $_SESSION["usuarioLogueado"] = $_COOKIE["email"];
 }
 
-function cookieEmail(){
+function cookieEmail2() {
   return setcookie("email",$_POST["email"], time() + 60*60*24*30);
 }
 
-function cookieToSession(){
+function cookieToSession2(){
   return $_SESSION["usuarioLogueado"] = $_COOKIE["email"];
 }
 ?>

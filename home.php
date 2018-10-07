@@ -2,7 +2,59 @@
 require_once("funciones.php");
 if(estaLogueado()){
   $usuario = traerUsuarioLogueado();
-}
+};
+$productos = [
+  0 => [
+    "ID" => 1,
+    "nombre" =>"kit4camaras",
+    "precio" => 5000,
+    "descripcion" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+    "imagen" => "kit4camaras.png"
+  ],
+  1 => [
+    "ID" => 2,
+    "nombre" =>"kitAlarmas",
+    "precio" => 400,
+    "descripcion" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+    "imagen" => "img-cam.jpg"
+  ],
+  2 => [
+    "ID" => 3,
+    "nombre" =>"kitAntiIncendio",
+    "precio" => 900,
+    "descripcion" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+    "imagen" => "img-cam.jpg"
+  ],
+  3 => [
+    "ID" => 4,
+    "nombre" =>"Drones",
+    "precio" => 800,
+    "descripcion" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+    "imagen" => "img-cam.jpg"
+  ],
+  4 => [
+    "ID" => 5,
+    "nombre" =>"Accesorios",
+    "precio" => 700,
+    "descripcion" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+    "imagen" => "img-cam.jpg"
+  ],
+  5 => [
+    "ID" => 6,
+    "nombre" =>"Cámara 4k",
+    "precio" => 600,
+    "descripcion" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+    "imagen" => "img-cam.jpg"
+  ],
+  6 => [
+    "ID" => 7,
+    "nombre" =>"Sistema UPS",
+    "precio" => 1000,
+    "descripcion" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+    "imagen" => "img-cam.jpg"
+  ]
+
+];
 ?>
 
 <!DOCTYPE html>
@@ -48,64 +100,27 @@ if(estaLogueado()){
               <h2 class="titulo-product">Productos</h2>
           </div>
         <div class="boxes-container">
+          <!-- productos -->
           <section class="productos-container">
+          <?php foreach ($productos as $producto) { ?>
             <article class="productos" class="productbox">
               <div class="photo-container">
-                <img class="photo" src="img/producto1.png" alt="pdto 01">
-                    </div>
-              <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-              <a class="masInfo" href="#">+Más Info</a></div>
+                <img class="photo" src="img/<?=$producto["imagen"]?>" alt="pdto 01">
+              </div>
+              <div class="product-text" class="productbox">
+              <p class="texto-producto">
+                <h2>
+                  <p><?=$producto["nombre"]?></p>
+                </h2>
+                <p><?=$producto["descripcion"]?></p>
+              </p>
+              	<?php }?>
+              <a class="masInfo" href="productos.php?id=<?=$productos["id"]?>">+Más Info</a></div>
+
             </article>
-            <article class="productos" class="productbox">
-                <div class="photo-container">
-                  <img class="photo" src="img/kit4camaras.png" alt="pdto 01">
-                </div>
-                <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-                      <a class="masInfo" href="#">+Más Info</a></div>
-              </article>
-              <article class="productos" class="productbox">
-                <div class="photo-container">
-                  <img class="photo" src="img/kit4camaras.png" alt="pdto 01">
-                    </div>
-                <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-                  <a class="masInfo" href="#">+Más Info</a></div>
-              </article>
-              <article class="productos" class="productbox">
-                <div class="photo-container">
-                  <img class="photo" src="img/img-cam.jpg" alt="pdto 01">
-                    </div>
-                <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-                  <a class="masInfo" href="#">+Más Info</a></div>
-              </article>
-              <article class="productos" class="productbox">
-                <div class="photo-container">
-                  <img class="photo" src="img/img-cam.jpg" alt="pdto 01">
-                    </div>
-                <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-                  <a class="masInfo" href="#">+Más Info</a></div>
-              </article>
-              <article class="productos" class="productbox">
-                <div class="photo-container">
-                  <img class="photo" src="img/img-cam.jpg" alt="pdto 01">
-                    </div>
-                <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-                  <a class="masInfo" href="#">+Más Info</a></div>
-              </article>
-              <article class="productos" class="productbox">
-                <div class="photo-container">
-                  <img class="photo" src="img/img-cam.jpg" alt="pdto 01">
-                    </div>
-                <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-                  <a class="masInfo" href="#">+Más Info</a></div>
-              </article>
-              <article class="productos" class="productbox">
-                <div class="photo-container">
-                  <img class="photo" src="img/img-cam.jpg" alt="pdto 01">
-                    </div>
-                <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-                  <a class="masInfo" href="#">+Más Info</a></div>
-              </article>
-            </section>
+
+
+          </section>
             <div class="sidebar-container">
               <div class="novedades-container">
                 <div class="promo1">
