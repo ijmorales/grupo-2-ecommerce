@@ -1,6 +1,7 @@
 <?php
+  include_once("funciones.php");
   session_start();
   session_destroy();
-  setcookie("usuarioLogueado", "", -1);
+  borrarCookies();
   header("Location:home.php");exit;
  ?>

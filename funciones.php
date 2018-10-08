@@ -220,4 +220,8 @@ function cookieToSession(){
   }
 }
 
+function borrarCookies(){
+  setcookie("usuarioLogueado", "", -1);
+}
+
 ?>
