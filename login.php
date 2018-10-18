@@ -1,13 +1,22 @@
 <?php
   require_once("./funciones.php");
-  if($_POST){
+  if(estaLogueado()){
+    header("Location:home.php");exit;
+  }
 
-    $errores = verificarLogin($_POST);
+  if($_POST){
+    if(estaLogueado()){
+      var_dump(estaLogueado());
+      header("Location:home.php");exit;
+    }
+    $db = conectarDB();
+    $errores = validarLogin($_POST, $db);
 
     if(empty($errores)){
-      loguear($_POST["email"]);
+      $usuarioId = traerUsuarioPorEmail($_POST["email"], $db)["id"];
+      loguear($usuarioId);
       if(isset($_POST["remember-me"]) == "on"){
-        cookieRecordarme($_POST["email"]);
+        cookieRecordarme($usuarioId);
       }
       header("Location:home.php");exit;
     }

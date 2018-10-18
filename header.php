@@ -2,7 +2,8 @@
 require_once("funciones.php");
 $usuarioLogueado = null;
 if(estaLogueado()){
-  $usuarioLogueado = traerUsuarioLogueado();
+  $db = conectarDB();
+  $usuarioLogueado = traerUsuarioLogueado($db);
 }
 ?>
 

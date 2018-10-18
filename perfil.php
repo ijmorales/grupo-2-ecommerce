@@ -2,8 +2,9 @@
   require_once("./funciones.php");
   // Si viene por GET, chequea que traiga el parametro ID en el querystring.
   if(isset($_GET["id"])){
+    $db = conectarDb();
     // Trae al usuario del cual se solicito su perfil
-    $usuarioPerfil = buscar_por_id($_GET["id"]);
+    $usuarioPerfil = traerUsuarioPorId($_GET["id"], $db);
     if($usuarioPerfil === null){
       // Si no encuentra ese usuario, redirige a 404.
       header("Location:404.php");exit;
@@ -30,7 +31,7 @@
             <img src="uploads/avatars/<?=$usuarioPerfil["avatar"]?>" alt="" class="avatar-grande">
           </div>
           <div class="perfil-nombre-container">
-            <?=$usuario["nombre"]?> <?=$usuarioPerfil["apellido"]?>
+            <?=$usuarioPerfil["nombre"]?> <?=$usuarioPerfil["apellido"]?>
           </div>
           <div class="perfil-email-container">
             <p class="perfil-email-texto"><?=$usuarioPerfil["email"]?></p>

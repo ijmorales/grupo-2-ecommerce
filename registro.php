@@ -1,5 +1,8 @@
 <?php
   require_once("funciones.php");
+  if(estaLogueado()){
+    header("Location:home.php");exit;
+  }
   $camposDefault = [
     "nombre" => "",
     "apellido" => "",
@@ -7,11 +10,13 @@
   ];
   $errores = [];
   if($_POST){
-    $errores = validar_registracion($_POST, $_FILES);
+    $db = conectarDB();
+    $errores = validarRegistracion($_POST, $_FILES, $db);
     if(empty($errores)){
-      $usuario = armar_usuario($_POST, $_FILES);
-      crear_usuario($usuario);
-      header("Location:login.php");exit;
+      $usuario = armarUsuario($_POST, $_FILES);
+      if(crearUsuario($usuario, $db)){
+        header("Location:login.php");exit;
+      }
     }else{
       // Chequea que no haya errores para ese campo, y lo agrega al autocompletado.
       // Los campos de contraseña no se autocompletan por seguridad.
