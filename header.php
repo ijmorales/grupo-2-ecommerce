@@ -6,84 +6,44 @@ if(estaLogueado()){
 }
 ?>
 
-    <header class="main-header">
-      <nav class="navbar navbar-dark main-navbar navbar-expand-md">
-        <a class="navbar-brand" href="home.php">
-          <img src="img/logo.png" alt="" class="logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-          <!-- Contenido que en mobile se colapsa. -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="links-utiles">
-          <span class="links-extra">
-            <ul>
-              <li>
-                <a href="#">Quienes somos</a>
-              </li>
-              <li>
-                <p>|</p>
-              </li>
-              <li>
-                <a href="#">Servicio Tecnico</a>
-              </li>
-              <li>
-                <p>|</p>
-              </li>
-              <li>
-                <a href="#">Monitoreo</a>
-              </li>
-            </ul>
-          </span>
-          <span class="llamenos">
-            <p>Llamenos 0800-888-6666</p>
-          </span>
-          <span class="header-rrss">
-            <ul>
-              <li>
-                <a href="https://twitter.com/"><ion-icon name="logo-twitter" size="large"></ion-icon></a>
-              </li>
-              <li>
-                <a href="https://instagram.com/"><ion-icon name="logo-instagram" size="large"></ion-icon></a>
-              </li>
-              <li>
-                <a href="https://facebook.com/"><ion-icon name="logo-facebook" size="large"></ion-icon></a>
-              </li>
-            </ul>
-          </span>
+<header class="header">
+  <div class="upper">
+     <!-- Logo caja 1 -->
+    <div class="logo">
+      <a class="navbar-brand" href="home.php">
+        <img src="img/logo.png" alt="" class="logo">
+      </a>
+    </div>
+    <div class="menu-section">
+      <div class="user-menu">
+        <ul class="user-items">
+          <li> <a href="#">Login</a> </li>
+          <li> <a href="#">Registro</a> </li>
+        </ul>
       </div>
-          <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown nav-cuenta">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Cuenta
-            </a>
-            <?php if($usuarioLogueado): ?>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="mi-cuenta.php">Mi Cuenta</a>
-                <a class="dropdown-item" href="logout.php">Logout</a>
-              </div>
-            <?php else: ?>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="login.php">Login</a>
-                <a class="dropdown-item" href="registro.php">Registro</a>
-              </div>
-            <?php endif; ?>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Kits alarmas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Camaras</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Anti incendios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Accesorios</a>
-          </li>
-      </ul>
-        </div>
-      </nav>
-    </header>
+      <div class="categories">
+        <ul>
+          <li> <a href="#">Kits</a> </li>
+          <li> <a href="#">Cámaras</a> </li>
+          <li> <a href="#">Alarmas</a> </li>
+          <li> <a href="#">Accesorios</a> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- menues caja 2 -->
+  <div class="contact-us">
+    <ul class="menu-items">
+      <li> <a href="#">Quienes somos</a> </li>
+      <li> <a href="#">Servicio tecnico</a> </li>
+      <li> <a href="#">Monitoreo</a> </li>
+      <li> <a href="#">Llamenos 4158-5451</a> </li>
+    </ul>
+    <ul class="social">
+      <li> <a href="#"><i class="fab fa-linkedin"></i></a> </li>
+      <li> <a href="#"><i class="fab fa-facebook-square"></i> </a> </li>
+      <li> <a href="#"><i class="fab fa-instagram"></i></a> </li>
+    </ul>
+  </div>
+
+</header>
