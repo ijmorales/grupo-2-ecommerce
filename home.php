@@ -140,8 +140,5 @@ if(estaLogueado()){
           <!-- Footer -->
       <?php include_once("footer.php") ?>
     </div> <!-- Aca cierra el div del main-container  -->
-
-    <!-- JavaScript iconos -->
-    <script src="https://unpkg.com/ionicons@4.4.2/dist/ionicons.js"></script>
   </body>
 </html>

@@ -6,13 +6,6 @@ if(estaLogueado()){
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
     <header class="main-header">
       <nav class="navbar navbar-dark main-navbar navbar-expand-md">
         <a class="navbar-brand" href="home.php">
@@ -94,5 +87,3 @@ if(estaLogueado()){
         </div>
       </nav>
     </header>
-  </body>
-</html>
