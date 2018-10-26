@@ -59,15 +59,6 @@ CREATE TABLE `direcciones` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `direcciones`
---
-
-LOCK TABLES `direcciones` WRITE;
-/*!40000 ALTER TABLE `direcciones` DISABLE KEYS */;
-INSERT INTO `direcciones` VALUES (1,'Nevada','2569','Fondo','','1417'),(2,'Nogoya','4729','','','1417'),(3,'Benito Juarez','2609','2do 7','','1417');
-/*!40000 ALTER TABLE `direcciones` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `envios`
@@ -137,7 +128,6 @@ CREATE TABLE `marcas` (
 
 LOCK TABLES `marcas` WRITE;
 /*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
-INSERT INTO `marcas` VALUES (1,'Apple'),(2,'Samsung'),(3,'Nokia'),(4,'Motorola'),(5,'LG'),(6,'Lenovo'),(7,'Phillips'),(8,'Dell'),(9,'Acer'),(10,'Asus');
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,7 +253,6 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (13,'Ignacio','Morales','moralesignaciojoaquin@gmail.com','$2y$10$o3ACeR3GXPA/0zNf9Edh4u7wsIssj9043IfZKE4s88cE/U0yIsdHS',NULL,'5bc8a46928686.jpg',NULL,NULL),(14,'Juan','Perez','juanperez@gmail.com','$2y$10$pIhsLebc6X0LsloBwStdl.Bqz4SzgKgLhwtyAucGc8NbS9sIjtb/i',NULL,'5bc8a55ed8dcd.jpg',NULL,NULL),(16,'Rodrigo','Martinez','rodrigomartinez@gmail.com','$2y$10$.DnAkxcNkdWcXgu4xGkn6eHqorLN6VPaHDCmXKojbEq0GhDiwmAZG',NULL,'default_avatar.jpg',NULL,NULL),(17,'Fernanda','Gonzales','fernandagonzales@hotmail.com','$2y$10$q21xNFZ0dUrcSMXjMYZ1kuCjKV7ZNBTbq2M/dBN9REJVrFgDSs9Dm',NULL,'5bc8a75138410.jpeg',NULL,NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
