@@ -2,7 +2,6 @@
 *.json
 *.jpg
 usuarios.json
-uploads/avatars/
 
 # Allow
 !uploads/avatars/default_avatar.jpg
