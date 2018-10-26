@@ -1,5 +1,8 @@
+# Ignore
 *.json
 *.jpg
 usuarios.json
 uploads/avatars/
-uploads/avatars/
+
+# Allow
+!uploads/avatars/default_avatar.jpg
