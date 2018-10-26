@@ -34,7 +34,7 @@
                 <td scope='row'><?=$usuario["apellido"]?></th>
                 <td scope='row'><?=$usuario["email"]?></th>
               </tr>
-            <?php endforeach;?>            
+            <?php endforeach;?>
             </tbody>
           </table>
         </div>

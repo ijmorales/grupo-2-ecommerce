@@ -5,10 +5,6 @@
   }
 
   if($_POST){
-    if(estaLogueado()){
-      var_dump(estaLogueado());
-      header("Location:home.php");exit;
-    }
     $db = conectarDB();
     $errores = validarLogin($_POST, $db);
 

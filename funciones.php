@@ -1,20 +1,12 @@
 <?php
 // Constantes de la ubicacion de los archivos.
-define("USUARIOS_JSON", "usuarios.json");
+//define("USUARIOS_JSON", "usuarios.json");
 define("UPLOADS_DIR", "uploads");
 
 session_start();
 cookieToSession();
 
-function conectarDB(){
-  $user = 'root';
-  $pw = '';
-  $dsn = 'mysql:host=localhost;dbname=grupo_2_ecommerce;port=3306';
-  $db = new PDO($dsn, $user, $pw);
-  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  return $db;
-}
-
+// VALIDACIONES
 function validarRegistracion($datos, $archivos, $db){
   $errores = [];
   // Remueve espacios de más en todos los campos excepto en las contraseñas.
@@ -27,7 +19,7 @@ function validarRegistracion($datos, $archivos, $db){
 
   // Valido espacios en blanco.
   foreach($datos as $campo => $value){
-    if(validar_campo_blanco($value) == false){
+    if(validarCampoBlanco($value) == false){
       $errores["$campo"] = "El campo no debe estar vacio.";
     }
   }
@@ -109,9 +101,29 @@ function validarRegistracion($datos, $archivos, $db){
   return $errores;
 }
 
-function validar_campo_blanco($campo){
-  return !($campo == "" || ctype_space($campo));
+function validarLogin($datos, $db){
+  $errores = [];
+  $errorGeneral = "Los datos ingresados no son correctos.";
+  $usuario = traerUsuarioPorEmail($datos["email"], $db);
+
+  // Chequea que el email exista. Si existe valida los campos, sino directamente retorna error.
+  if($datos["email"] == ""){
+    $errores["email"] = "El email no puede estar vacio.";
+  }elseif($usuario == null){
+    $errores["general"] = $errorGeneral;
+  }else{
+    // Valida que los campos no esten vacios.
+    if($datos["psw"] == ""){
+      $errores["psw"] = "La contraseña no debe estar vacia.";
+    }elseif(password_verify($datos["psw"], $usuario["pw"]) == false){
+      $errores["general"] = $errorGeneral;
+    }
+  }
+  return $errores;
 }
+//
+
+// PROCESAMIENTO DE USUARIOS
 
 function armarUsuario($datos, $archivos){
   // La info ya llega validada, por lo que el avatar deberia estar OK.
@@ -134,7 +146,6 @@ function armarUsuario($datos, $archivos){
   ];
 }
 
-// La info ya viene validada, hacemos binding de parametros solo por si acaso.
 function crearUsuario($usuario, $db){
   $q = $db->prepare("INSERT INTO usuarios VALUES(default, :nombre, :apellido, :email, :pw, null, :avatar, null, null)");
   $q->bindValue(":nombre", $usuario["nombre"], PDO::PARAM_STR);
@@ -142,7 +153,7 @@ function crearUsuario($usuario, $db){
   $q->bindValue(":email", $usuario["email"], PDO::PARAM_STR);
   $q->bindValue(":pw", $usuario["password"], PDO::PARAM_STR);
   $q->bindValue(":avatar", $usuario["avatar"], PDO::PARAM_STR);
-  
+
   try{
     $q->execute();
     return true;
@@ -151,7 +162,6 @@ function crearUsuario($usuario, $db){
   }
 }
 
-// Recibe un array con los datos del avatar y un string con el nombre final del archivo (sin extension).
 function procesarAvatar($avatar, $nombreArchivo){
   $ext = pathinfo($avatar["name"], PATHINFO_EXTENSION);
   $archivoTemporal = $avatar["tmp_name"];
@@ -163,6 +173,52 @@ function procesarAvatar($avatar, $nombreArchivo){
   return $nombreArchivo . "." . $ext;
 }
 
+//
+
+// LOGIN DE USUARIOS
+
+function loguear($id){
+  $_SESSION["usuarioLogueado"] = $id;
+}
+
+function estaLogueado(){
+  return isset($_SESSION["usuarioLogueado"]);
+}
+
+function traerUsuarioLogueado($db){
+  return traerUsuarioPorId($_SESSION["usuarioLogueado"], $db);
+}
+
+//
+
+// COOKIES
+
+function cookieRecordarme($id){
+  return setcookie("usuarioLogueado", $id, time() + 60*60*24*30);
+}
+
+function cookieToSession(){
+  if(isset($_COOKIE["usuarioLogueado"]) && !(isset($_SESSION["usuarioLogueado"]))){
+    $_SESSION["usuarioLogueado"] = $_COOKIE["usuarioLogueado"];
+  }
+}
+
+function borrarCookies(){
+  setcookie("usuarioLogueado", "", -1);
+}
+
+//
+
+// ACCESO A LA DB
+
+function conectarDB(){
+  $user = 'root';
+  $pw = '';
+  $dsn = 'mysql:host=localhost;dbname=grupo_2_ecommerce;port=3306';
+  $db = new PDO($dsn, $user, $pw);
+  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  return $db;
+}
 function traerUsuarios($db, $fetchMode = PDO::FETCH_ASSOC){
   $q = $db->prepare("SELECT * FROM usuarios");
   try {
@@ -195,64 +251,36 @@ function traerUsuarioPorId($id, $db, $fetchMode = PDO::FETCH_ASSOC){
   return $q->fetch($fetchMode);
 }
 
-
-function validarLogin($datos, $db){
-  $errores = [];
-  $errorGeneral = "Los datos ingresados no son correctos.";
-  $usuario = traerUsuarioPorEmail($datos["email"], $db);
-  
-  // Chequea que el email exista. Si existe valida los campos, sino directamente retorna error.
-  if($datos["email"] == ""){
-    $errores["email"] = "El email no puede estar vacio.";
-  }elseif($usuario == null){
-    $errores["general"] = $errorGeneral;
-  }else{
-    // Valida que los campos no esten vacios.
-    if($datos["psw"] == ""){
-      $errores["psw"] = "La contraseña no debe estar vacia.";
-    }elseif(password_verify($datos["psw"], $usuario["pw"]) == false){
-      $errores["general"] = $errorGeneral;
-    }
-  }
-  return $errores;
-}
-
-function loguear($id){
-  $_SESSION["usuarioLogueado"] = $id;
-}
-
-function estaLogueado(){
-  return isset($_SESSION["usuarioLogueado"]);
-}
-
-function traerUsuarioLogueado($db){
-  return traerUsuarioPorId($_SESSION["usuarioLogueado"], $db);
-}
-
-function cookieRecordarme($id){
-  return setcookie("usuarioLogueado", $id, time() + 60*60*24*30);
-}
-
-function cookieToSession(){
-  if(isset($_COOKIE["usuarioLogueado"]) && !(isset($_SESSION["usuarioLogueado"]))){
-    $_SESSION["usuarioLogueado"] = $_COOKIE["usuarioLogueado"];
+function eliminarUsuario($id, $db){
+  $q = $db->prepare("DELETE FROM usuarios WHERE id = :id");
+  $q->bindValue(":id", $id, PDO::PARAM_INT);
+  try{
+    $q->execute();
+    return true;
+  }catch(\Exception $e){
+    return $e;
   }
 }
+//
 
-function borrarCookies(){
-  setcookie("usuarioLogueado", "", -1);
+// HELPERS
+
+function validarCampoBlanco($campo){
+  return !($campo == "" || ctype_space($campo));
 }
 
-// Obsoletas
+//
 
-function generarId(){
-  $usuarios = traerUsuarios();
-  if($usuarios === null){
-    return 1;
-  }
-  // Obtengo el id del ultimo usuario del array. Asumo que esta ordenado.
-  $lastId = end($usuarios)["id"];
-  return $lastId + 1;
-}
+// LEGACY
+
+// function generarId(){
+//   $usuarios = traerUsuarios();
+//   if($usuarios === null){
+//     return 1;
+//   }
+//   // Obtengo el id del ultimo usuario del array. Asumo que esta ordenado.
+//   $lastId = end($usuarios)["id"];
+//   return $lastId + 1;
+// }
 
 ?>
