@@ -70,13 +70,25 @@ a:hover{
   flex-direction: row;
 }
 .contact-us {
-  margin: 10px 0;
+  margin: 5px 0;
+  padding: 3px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  background-color: #97bf0d;
+  color: black;
 }
 .contact-us .social {
   margin-left: 20px;
   flex-basis: 50px;
   justify-content: space-between;
+  color: black;
+
+}
+
+
+.main-container {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1em;
+
 }
