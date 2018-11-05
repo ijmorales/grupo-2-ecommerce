@@ -132,6 +132,12 @@ a:hover{
 
 /**body**/
 
+.carrousel {
+  width: 100%;
+  position: relative;
+
+}
+
 .productos {
   background-color: #97bf0d;
   color: white;
