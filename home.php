@@ -3,6 +3,21 @@ require_once("funciones.php");
 if(estaLogueado()){
   $usuario = traerUsuarioLogueado();
 }
+
+$productos=[
+ 0 => [
+"id" => 1,
+"titulo" => "Kit-Alarma",
+"descripcion" => "Central y panel de Alarma",
+"imagen" => "producto1.png",
+],
+1 => [
+"id" => 2,
+"titulo" => "Sistema de observación ",
+"descripcion" => "Sistema de observación COLOR con monitor LCD de 7",
+"imagen" => "producto2.png",
+]
+];
 ?>
 
 <!DOCTYPE html>
@@ -24,14 +39,35 @@ if(estaLogueado()){
         <img src="img\drones.png" alt="">
       </div>
         <!-- productos -->
-        <section>
+        <section class="productos">
+			<?php foreach ($productos as $producto) { ?>
+				<article class="producto">
+					<div class="photo-container">
+						<img class="photo" src="img/<?=$producto["imagen"]?>" alt="pdto 01">
+
+						<a class="zoom" href="#">Ampliar foto</a>
+					</div>
+					<h2>
+						<?= $producto["titulo"] ?>
+					</h2>
+					<p><?=$producto["descripcion"]?></p>
+
+
+
+					<a class="more" href="producto.php?id=<?=$producto["id"]?>">ver más</a>
+				</article>
+			<?php } ?>
+
+		</section>
+
+        <!--
 
         <article class="productos"
-        <img class="fotoProducto" src="img/kit4camaras.png" alt="pdto 01">
+        <img class="fotoProducto" src="img/producto1.png" alt="pdto 01">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation </p>
         <a class="masInfo" href="#">+Más Info</a></div>
-        </article>
-        </section>
+        </article> -->
+
 
 
 
