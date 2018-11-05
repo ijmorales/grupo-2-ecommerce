@@ -26,7 +26,7 @@ if(estaLogueado()){
           <li> <a href="#">Kits</a> </li>
           <li> <a href="#">Cámaras</a> </li>
           <li> <a href="#">Alarmas</a> </li>
-          <li> <a href="#">Accesorios</a> </li>
+          <li> <a href="#">Ofertas</a> </li>
         </ul>
       </div>
     </div>
@@ -34,15 +34,16 @@ if(estaLogueado()){
   <!-- menues caja 2 -->
   <div class="contact-us">
     <ul class="menu-items">
-      <li> <a href="#">Quienes somos</a> </li>
-      <li> <a href="#">Servicio tecnico</a> </li>
-      <li> <a href="#">Monitoreo</a> </li>
-      <li> <a href="#">Llamenos 4158-5451</a> </li>
+      <li> <a href="#">EMPRESA</a> </li>
+      <li> <a href="#">SERVICIOS</a> </li>
+      <li> <a href="#">NOVEDADES</a> </li>
+      <li> <a href="#">Llamenos +5411 4209-3622</a> </li>
     </ul>
     <ul class="social">
       <li> <a href="#"><i class="fab fa-linkedin"></i></a> </li>
       <li> <a href="#"><i class="fab fa-facebook-square"></i> </a> </li>
       <li> <a href="#"><i class="fab fa-instagram"></i></a> </li>
+      <li> <a href="mailto:info@helsecurity.com"><i class="fas fa-envelope"></i></a> </li>
     </ul>
   </div>
 

@@ -95,3 +95,39 @@ a:hover{
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1em;
 }
+
+/*footer*/
+
+.main-footer {
+  background-color: #696969;
+  padding: 10px;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+}
+
+.logo-footer-img {
+  width:120px;
+  height:50px;
+
+}
+
+.footer-info {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1em;
+
+}
+
+.footer-rrss-container .footer-rrss-list {
+  padding: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+
+}
+
+.informacion-contacto {
+  text-align: center;
+}
+
+/**body**
