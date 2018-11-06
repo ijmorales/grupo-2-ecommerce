@@ -7,16 +7,35 @@ if(estaLogueado()){
 $productos=[
  0 => [
 "id" => 1,
-"titulo" => "Kit-Alarma",
-"descripcion" => "Central y panel de Alarma",
-"imagen" => "producto1.png",
+"titulo" => "Sistema de observación ",
+"descripcion" => "Kit central + panel 8 zonas expandible a 16 ",
+"imagen" => "producto4.png",
 ],
 1 => [
 "id" => 2,
 "titulo" => "Sistema de observación ",
 "descripcion" => "Sistema de observación COLOR con monitor LCD de 7",
 "imagen" => "producto2.png",
+],
+2 => [
+"id" => 3,
+"titulo" => "Sistema de observación ",
+"descripcion" => "Sistema de observación COLOR con monitor LCD de 7",
+"imagen" => "producto3.png",
+],
+3 => [
+"id" => 4,
+"titulo" => "Sistema de observación ",
+"descripcion" => "Sistema de observación COLOR con monitor LCD de 7",
+"imagen" => "producto4.png",
+],
+4 => [
+"id" => 5,
+"titulo" => "Sistema de observación ",
+"descripcion" => "Sistema de observación COLOR con monitor LCD de 7",
+"imagen" => "producto4.png",
 ]
+
 ];
 ?>
 
@@ -44,17 +63,12 @@ $productos=[
 				<article class="producto">
 					<div class="photo-container">
 						<img class="photo" src="img/<?=$producto["imagen"]?>" alt="pdto 01">
-
-						<a class="zoom" href="#">Ampliar foto</a>
-					</div>
+          </div>
 					<h2>
 						<?= $producto["titulo"] ?>
 					</h2>
 					<p><?=$producto["descripcion"]?></p>
-
-
-
-					<a class="more" href="producto.php?id=<?=$producto["id"]?>">ver más</a>
+            <a class="more" href="producto.php?id=<?=$producto["id"]?>">ver más</a>
 				</article>
 			<?php } ?>
 

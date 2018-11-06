@@ -34,10 +34,10 @@ if(estaLogueado()){
   <!-- menues caja 2 -->
   <div class="contact-us">
     <ul class="menu-items">
-      <li> <a href="#">EMPRESA</a> </li>
+      <li> <a href="#">HOME</a> </li>
       <li> <a href="#">SERVICIOS</a> </li>
       <li> <a href="#">NOVEDADES</a> </li>
-      <li> <a href="#">Llamenos +5411 4209-3622</a> </li>
+      <li> <a href="#">LLAMENOS +5411 4209-3622</a> </li>
     </ul>
     <ul class="social">
       <li> <a href="#"><i class="fab fa-linkedin"></i></a> </li>

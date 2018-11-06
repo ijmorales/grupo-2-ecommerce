@@ -1,3 +1,18 @@
+/*MediaQuerys*/
+
+@media screen and (min-width: 480px) {
+    .carrousel {
+        overflow: hidden;
+    }
+}
+
+
+
+
+
+
+
+
 /* Reseteos generales */
 
 *{
@@ -30,6 +45,7 @@ a:hover{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
 }
 .logo {
   flex-basis: 30%;
@@ -133,23 +149,33 @@ a:hover{
 /**body**/
 
 .carrousel {
-  max-width: 100%;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: grey;
+  padding-bottom: 20px;
+}
 
+h2 {
+  font-family: 'Rubik', sans-serif;
 }
 
 .productos {
+  display: flex;
   background-color: #97bf0d;
   color: white;
-  display: flex;
   flex-direction: row;
+  padding: 50px;
 
 }
 
-.productos .photo {
+.photo-container {
   width: 20%;
   height: 20%;
 }
+.producto .productos {
+  padding:50px;
+}
+
 
 
 /**perfil.php**/
