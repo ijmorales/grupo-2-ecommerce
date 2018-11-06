@@ -36,7 +36,7 @@ a:hover{
   max-width: 190px
 }
 .logo img {
-  width: 100%;
+  max-width: 100%;
 }
 .menu-section {
   /* background: rgba(255, 0, 0, 0.5); */
@@ -92,7 +92,7 @@ a:hover{
 }
 
 .main-container {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family:'Rubik', sans-serif;
   font-size: 1em;
 }
 
@@ -113,7 +113,7 @@ a:hover{
 }
 
 .footer-info {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 1em;
 
 }
@@ -133,7 +133,7 @@ a:hover{
 /**body**/
 
 .carrousel {
-  width: 100%;
+  max-width: 100%;
   position: relative;
 
 }
@@ -149,4 +149,12 @@ a:hover{
 .productos .photo {
   width: 20%;
   height: 20%;
+}
+
+
+/**perfil.php**/
+
+.perfil-main-container {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1em;
 }
