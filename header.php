@@ -1,4 +1,5 @@
 <?php
+
 require_once("funciones.php");
 $usuarioLogueado = null;
 if(estaLogueado()){
@@ -17,8 +18,8 @@ if(estaLogueado()){
     <div class="menu-section">
       <div class="user-menu">
         <ul class="user-items">
-          <li> <a href="#">Login</a> </li>
-          <li> <a href="#">Registro</a> </li>
+          <li> <a href="login.php">Login</a> </li>
+          <li> <a href="registro.php">Registro</a> </li>
         </ul>
       </div>
       <div class="categories">
@@ -34,9 +35,9 @@ if(estaLogueado()){
   <!-- menues caja 2 -->
   <div class="contact-us">
     <ul class="menu-items">
-      <li> <a href="#">HOME</a> </li>
-      <li> <a href="#">SERVICIOS</a> </li>
-      <li> <a href="#">NOVEDADES</a> </li>
+      <li> <a href="home.php">HOME</a> </li>
+      <li> <a href="servicios.php">SERVICIOS</a> </li>
+      <li> <a href="novedades.php">NOVEDADES</a> </li>
       <li> <a href="#">LLAMENOS +5411 4209-3622</a> </li>
     </ul>
     <ul class="social">

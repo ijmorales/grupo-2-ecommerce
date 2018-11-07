@@ -26,18 +26,17 @@
   }
 ?>
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
     <!-- Estilos -->
     <?php include_once("stylesheets.php")?>
+
+
     <title>Registro</title>
-  </head>
+
   <!-- Comienzo del formulario -->
   <body>
+    
       <div class="main-container-registro  flex-column container">
-        <?php include_once("header.php") ?>
+
         <div class="container form-container">
             <form action="registro.php" method="post" enctype="multipart/form-data">
               <div class="flex-container">
@@ -132,8 +131,9 @@
             </div>
           </form>
         </div>
-        <?php include_once("footer.php") ?>
+
       </div>
 
   </body>
-</html>
+
+  <?php include_once("footer.php") ?>

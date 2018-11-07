@@ -1,16 +1,3 @@
-/*MediaQuerys*/
-
-@media screen and (min-width: 480px) {
-    .carrousel {
-        overflow: hidden;
-    }
-}
-
-
-
-
-
-
 
 
 /* Reseteos generales */
@@ -175,7 +162,27 @@ h2 {
 .producto .productos {
   padding:50px;
 }
+/*MediaQuerys*/
 
+@media only screen and (max-width: 480px) {
+    .carrousel {
+        display: none;
+    }
+    .productos {
+      display:flex;
+      flex-direction: column;
+    }
+
+}
+@media only screen and (max-width: 600px) {
+    .carrousel {
+        display: none;
+    }
+    .productos {
+      display:flex;
+      flex-direction: column;
+    }
+}
 
 
 /**perfil.php**/

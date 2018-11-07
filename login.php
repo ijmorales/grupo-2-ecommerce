@@ -1,5 +1,5 @@
 <?php
-  require_once("./funciones.php");
+  require_once("funciones.php");
   if($_POST){
 
     $errores = verificarLogin($_POST);
@@ -14,15 +14,12 @@
   }
 ?>
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
+
     <!-- Estilos -->
     <?php include_once("stylesheets.php") ?>
 
     <title>Login</title>
-  </head>
+
   <body>
     <div class="main-container-login container flex-column justify-content-between">
       <?php include_once("header.php") ?>
@@ -77,4 +74,3 @@
         <?php include_once("footer.php") ?>
     </div>
   </body>
-</html>
