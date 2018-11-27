@@ -1,9 +1,8 @@
 <?php
-require_once("funciones.php");
-$usuarioLogueado = null;
-if(estaLogueado()){
-  $db = conectarDB();
-  $usuarioLogueado = traerUsuarioLogueado($db);
+$db = new DBMySql();
+$usuarioLogueado = '';
+if($auth->estaLogueado()){
+  $usuarioLogueado = $auth->getUsuarioLogueado();
 }
 ?>
 

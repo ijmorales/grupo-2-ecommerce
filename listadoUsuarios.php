@@ -1,7 +1,7 @@
 <?php
-  include_once("funciones.php");
-  $db = conectarDB();
-  $usuarios = traerUsuarios($db);
+  include_once("init.php");
+  $db = new DBMySql();
+  $usuarios = $db->getAllUsuarios();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -29,10 +29,10 @@
             <tbody>
             <?php foreach($usuarios as $usuario): ?>
               <tr>
-                <th scope='row'><a href="perfil.php?id=<?=$usuario['id']?>"><?=$usuario["id"]?></a></th>
-                <td scope='row'><?=$usuario["nombre"]?></th>
-                <td scope='row'><?=$usuario["apellido"]?></th>
-                <td scope='row'><?=$usuario["email"]?></th>
+                <th scope='row'><a href="perfil.php?id=<?=$usuario->getId()?>"><?=$usuario->getId()?></a></th>
+                <td scope='row'><?=$usuario->getNombre()?></th>
+                <td scope='row'><?=$usuario->getApellido()?></th>
+                <td scope='row'><?=$usuario->getEmail()?></th>
               </tr>
             <?php endforeach;?>
             </tbody>

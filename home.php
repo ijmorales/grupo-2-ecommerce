@@ -1,8 +1,8 @@
 <?php
-require_once("funciones.php");
-if(estaLogueado()){
-  $db = conectarDB();
-  $usuario = traerUsuarioLogueado($db);
+require_once('init.php');
+
+if($auth->estaLogueado()){
+  $usuario = $auth->getUsuarioLogueado();
 }
 ?>
 

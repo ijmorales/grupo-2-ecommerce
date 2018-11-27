@@ -1,34 +1,40 @@
 <?php
-  require_once("funciones.php");
-  if(estaLogueado()){
-    header("Location:home.php");exit;
+require_once('init.php');
+require_once('model/validator.php');
+
+if($auth->estaLogueado()){
+  header("Location:home.php");exit;
+}
+
+$camposDefault = [
+  "nombre" => "",
+  "apellido" => "",
+  "email" => ""
+];
+$errores = [];
+if($_POST){
+  $validator = new Validator($db);
+  $errores = $validator->validarRegistracion($_POST, $_FILES);
+  if (empty($errores))
+  {
+    if (Usuario::create($_POST))
+    {
+      header("Location:login.php");exit;
+    }
   }
-  $camposDefault = [
-    "nombre" => "",
-    "apellido" => "",
-    "email" => ""
-  ];
-  $errores = [];
-  if($_POST){
-    $db = conectarDB();
-    $errores = validarRegistracion($_POST, $_FILES, $db);
-    if(empty($errores)){
-      $usuario = armarUsuario($_POST, $_FILES);
-      if(crearUsuario($usuario, $db)){
-        header("Location:login.php");exit;
-      }
-    }else{
-      // Chequea que no haya errores para ese campo, y lo agrega al autocompletado.
-      // Los campos de contraseña no se autocompletan por seguridad.
-      foreach($_POST as $campo => $valor){
-        if($campo != "psw" && $campo != "psw-repeat" && $campo != "avatar"){
-          if(isset($errores["$campo"]) == false){ // Si NO existe error en esa posicion.
-            $camposDefault["$campo"] = $valor;
-          }
+  else
+  {
+    // Chequea que no haya errores para ese campo, y lo agrega al autocompletado.
+    // Los campos de contraseña no se autocompletan por seguridad.
+    foreach($_POST as $campo => $valor){
+      if($campo != "pw" && $campo != "pw-repeat" && $campo != "avatar"){
+        if(isset($errores["$campo"]) == false){ // Si NO existe error en esa posicion.
+          $camposDefault["$campo"] = $valor;
         }
       }
     }
   }
+}
 ?>
 
 <!DOCTYPE html>
@@ -86,26 +92,26 @@
               </div>
 
               <div class="form-group">
-                <label for="psw"><b>Password</b></label>
-                <?php if(isset($errores["psw"])): ?>
-                  <input class="form-control is-invalid" type="password" placeholder="Ingrese su password" name="psw" required>
+                <label for="pw"><b>Password</b></label>
+                <?php if(isset($errores["pw"])): ?>
+                  <input class="form-control is-invalid" type="password" placeholder="Ingrese su password" name="pw" required>
                   <div class="invalid-feedback">
-                    <?=$errores["psw"]?>
+                    <?=$errores["pw"]?>
                   </div>
                 <?php else: ?>
-                  <input class="form-control" type="password" placeholder="Ingrese su password" name="psw" value="" required>
+                  <input class="form-control" type="password" placeholder="Ingrese su password" name="pw" value="" required>
                 <?php endif; ?>
               </div>
 
               <div class="form-group">
-                <label for="psw-repeat"><b>Repetir Password</b></label>
-                <?php if(isset($errores["psw-repeat"])): ?>
-                  <input class="form-control is-invalid" type="password" placeholder="Repita su password" name="psw-repeat" required>
+                <label for="pw-repeat"><b>Repetir Password</b></label>
+                <?php if(isset($errores["pw-repeat"])): ?>
+                  <input class="form-control is-invalid" type="password" placeholder="Repita su password" name="pw-repeat" required>
                   <div class="invalid-feedback">
-                    <?=$errores["psw-repeat"]?>
+                    <?=$errores["pw-repeat"]?>
                   </div>
                 <?php else: ?>
-                  <input class="form-control" type="password" placeholder="Repita su password" name="psw-repeat" value="" required>
+                  <input class="form-control" type="password" placeholder="Repita su password" name="pw-repeat" value="" required>
                 <?php endif; ?>
               </div>
 

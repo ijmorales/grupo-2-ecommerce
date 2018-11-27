@@ -1,22 +1,28 @@
 <?php
-  require_once("./funciones.php");
-  if(estaLogueado()){
-    header("Location:home.php");exit;
-  }
+include_once('init.php');
+include_once('model/validator.php');
 
-  if($_POST){
-    $db = conectarDB();
-    $errores = validarLogin($_POST, $db);
+if ($auth->estaLogueado())
+{
+  header("Location:home.php");exit;
+}
 
-    if(empty($errores)){
-      $usuarioId = traerUsuarioPorEmail($_POST["email"], $db)["id"];
-      loguear($usuarioId);
-      if(isset($_POST["remember-me"]) == "on"){
-        cookieRecordarme($usuarioId);
+if($_POST)
+{
+  $validator = new Validator($db);
+  $errores = $validator->validarLogin($_POST);
+
+  if (empty($errores))
+  {
+    $usuario = $db->getUsuarioByEmail($_POST["email"]);
+    $auth->loguear($usuario->getId());
+    if (isset($_POST["remember-me"]) == "on")
+      {
+        CookieHelper::setCookieRecordarme($usuarioId);
       }
-      header("Location:home.php");exit;
+        header("Location:home.php");exit;
     }
-  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,14 +55,14 @@
                   <?php endif; ?>
                 </div>
                 <div class="form-group">
-                  <label for="psw" class="text-info">Contraseña:</label><br>
-                  <?php if(isset($errores["psw"])): ?>
-                    <input type="password" name="psw" id="psw" class="form-control is-invalid">
+                  <label for="pw" class="text-info">Contraseña:</label><br>
+                  <?php if(isset($errores["pw"])): ?>
+                    <input type="password" name="pw" id="pw" class="form-control is-invalid">
                     <div class="invalid-feedback">
-                      <?=$errores["psw"]?>
+                      <?=$errores["pw"]?>
                     </div>
                   <?php else:?>
-                    <input type="password" name="psw" id="psw" class="form-control">
+                    <input type="password" name="pw" id="pw" class="form-control">
                   <?php endif; ?>
                 </div>
                 <?php if(isset($errores["general"])): ?>

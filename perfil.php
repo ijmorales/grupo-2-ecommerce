@@ -1,11 +1,11 @@
 <?php
-  require_once("./funciones.php");
+  include_once('init.php');
+  $db = new DBMySql();
   // Si viene por GET, chequea que traiga el parametro ID en el querystring.
   if(isset($_GET["id"])){
-    $db = conectarDb();
     // Trae al usuario del cual se solicito su perfil
-    $usuarioPerfil = traerUsuarioPorId($_GET["id"], $db);
-    if($usuarioPerfil === null){
+    $usuario = $db->getUsuarioById($_GET['id']);
+    if($usuario === null){
       // Si no encuentra ese usuario, redirige a 404.
       header("Location:404.php");exit;
     }
@@ -28,13 +28,13 @@
       <section name="usuario" class="container">
         <div class="detalle-usuario-container">
           <div class="perfil-img-container">
-            <img src="uploads/avatars/<?=$usuarioPerfil["avatar"]?>" alt="" class="avatar-grande">
+            <img src="uploads/avatars/<?=$usuario->getAvatar()?>" alt="" class="avatar-grande">
           </div>
           <div class="perfil-nombre-container">
-            <?=$usuarioPerfil["nombre"]?> <?=$usuarioPerfil["apellido"]?>
+            <?=$usuario->getNombre()?> <?=$usuario->getApellido()?>
           </div>
           <div class="perfil-email-container">
-            <p class="perfil-email-texto"><?=$usuarioPerfil["email"]?></p>
+            <p class="perfil-email-texto"><?=$usuario->getEmail()?></p>
           </div>
           <button class="contactar" type="button" name="contactar">Contactar</button>
         </div>
