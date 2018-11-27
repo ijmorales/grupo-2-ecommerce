@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+
 
 class RegisterController extends Controller
 {
@@ -49,9 +52,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nombre' => ['required', 'string', 'max:255'],
+            'apellido' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:usuarios'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'avatar' => ['image', 'max:6000'],
         ]);
     }
 
@@ -64,9 +69,36 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'nombre' => $data['nombre'],
+            'apellido' => $data['apellido'],
             'email' => $data['email'],
+            'avatar' => $data['avatar'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function showRegistrationForm(){
+        return view('auth.registro');
+    }
+
+    public function register(Request $request){
+        $datosUsuario = $request->all();
+
+        // Valida la informacion del formulario
+        $this->validator($datosUsuario)->validate();
+
+        // Guarda el avatar
+        if($request->file('avatar')){
+            $avatar = basename($request->file('avatar')->store('public/avatars'));
+        }else{
+            $avatar = 'default_avatar.jpg';
+        }
+
+        $datosUsuario['avatar'] = $avatar;
+
+        // Crea el usuario
+        event(new Registered($user = $this->create($datosUsuario)));
+        $this->guard()->login($user);
+        return redirect($this->redirectPath());
     }
 }
