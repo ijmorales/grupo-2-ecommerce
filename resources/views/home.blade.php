@@ -85,7 +85,8 @@
             <img class="photo" src="img/img-cam.jpg" alt="pdto 01">
             </div>
         <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-            <a class="masInfo" href="#">+Más Info</a></div>
+            <a class="masInfo" href="#">+Más Info</a>
+        </div>
         </article>
     </section>
     <div class="sidebar-container">
@@ -119,4 +120,13 @@
         </div>
     </div>
 </div>
+
+<div class='recomendador container'>
+    <form action="/recomendador" method="POST" class='d-flex flex-column'>
+        <div class='form-group'>
+            <input type="text" class='form-control'>
+        </div>
+    </form>
+</div>
+
 @endsection

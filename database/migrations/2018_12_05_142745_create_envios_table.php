@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddProductoTimestamps extends Migration
+class CreateEnviosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,13 @@ class AddProductoTimestamps extends Migration
      */
     public function up()
     {
-        Schema::table('productos', function(Blueprint $table){
+        Schema::create('envios', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('tracking');
+            $table->string('courier');
+            $table->unsignedInteger('estado_envio_id');
+            $table->date('enviado');
+            $table->date('recibido');
             $table->timestamps();
         });
     }
@@ -25,8 +31,6 @@ class AddProductoTimestamps extends Migration
      */
     public function down()
     {
-        Schema::table('productos', function(Blueprint $table){
-            $table->dropTimestamps();
-        });
+        Schema::dropIfExists('envios');
     }
 }

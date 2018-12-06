@@ -50,9 +50,7 @@ a:hover{
   color: white;
 }
 
-.menu-container{
 
-}
 
 .links-utiles{
   display: flex;
@@ -183,10 +181,12 @@ a:hover{
 
 div.main-container{
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   margin: 0 auto;
   max-width: 1180px !important;
   width: 100%;
+  /* height: 100vh; */
+  justify-content: space-between;
 }
 
 .boxes-container{
@@ -496,9 +496,7 @@ a {
   justify-content: center;
 }
 
-.perfil-email-texto{
 
-}
 
 .perfil-nombre-container{
   text-align: center;
@@ -537,15 +535,25 @@ VISTA LISTADO PRODUCTOS
   flex-flow: row wrap;
 }
 
-
-
-
-
-
-
 /* 
 
 */
+
+/* 
+
+PRODUCTOS
+
+*/
+
+.radio-tipo-imagen{
+  margin-top: 0.5rem;
+}
+
+
+
+
+
+
 
 /*  */
 /*  */
@@ -594,14 +602,13 @@ VISTA LISTADO PRODUCTOS
     align-items: center;
   }
 
-  .main-footer{
-    /* height: 12vh; */
-  }
 
   .informacion-contacto{
     text-align: center;
   }
 }
+
+
 
 
 @media (min-width: 1180px){

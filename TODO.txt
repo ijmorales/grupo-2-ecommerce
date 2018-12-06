@@ -2,7 +2,7 @@ TODO:
 - [x] Implementar login.
 - [] Permisos para distintos tipos de usuario.
 - [x] Modelo para el producto.
-- [] ProductoController.
+- [x] ProductoController.
 - [] Vista ListadoProductos.
 - [] Vista AgregarProducto.
 - [] Vista EliminarProducto.

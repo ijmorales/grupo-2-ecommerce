@@ -15,6 +15,17 @@ Route::get('/', function(){
     return view('welcome');
 });
 
+Route::get('/productos', 'ProductoController@listadoProducto');
+
+Route::get('/productos/agregar', 'ProductoController@agregarForm')->name('agregarProducto');
+Route::post('/productos/agregar', 'ProductoController@agregar');
+
+Route::get('/marcas', 'MarcaController@listadoMarcas');
+
+Route::get('/marcas/agregar', 'MarcaController@agregarForm')->name('agregarMarca');
+Route::post('/marcas/agregar', 'MarcaController@agregar');
+
+
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -34,3 +45,4 @@ Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('ver
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
