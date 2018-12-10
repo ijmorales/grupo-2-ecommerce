@@ -166,19 +166,23 @@ h2 {
 
 .container-form{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  flex-direction:row;
+  background-color: #ccc;
+  height: 50%;
 
 }
 .recomend{
   padding: 100px;
 }
 
-.btn{
-
-  justify-content: center;
-
+.Pregunta{
+  font-size: 50px;
+  padding: 50px;
+  text-align: center;
 }
+
+
 
 
 
