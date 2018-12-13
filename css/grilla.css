@@ -1,7 +1,7 @@
 body {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
-  background: #f8f8f8;
+  background: #cccccccf;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -98,7 +98,7 @@ code {
 }
 
 .wrapper {
-  width: 68em;
+  width: 80em;
 }
 
 * {
