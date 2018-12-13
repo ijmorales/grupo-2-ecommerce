@@ -146,22 +146,48 @@ h2 {
   font-family: 'Rubik', sans-serif;
   font-size: 32px;
 }
-
-.productos {
+/** productos **/
+.container-productos{
   display: flex;
-  background-color: #97bf0d;
+  justify-content:flex-end;
+  padding:20px;
+  width: 600px
+
+
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
   color: white;
-  flex-direction: row;
-  padding: 50px;
-
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
 }
 
-.photo-container {
-  width: 20%;
-  height: 20%;
+.card button:hover {
+  opacity: 0.7;
 }
-.producto .productos {
-  padding:50px;
+
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #80bb33 !important;
 }
 
 .container-form{
@@ -172,15 +198,18 @@ h2 {
   height: 50%;
 
 }
-.recomend{
-  padding: 100px;
+.recomended{
+  width: 100%;
+  height: 600px;
+  background-color: grey;
+
 }
 
-.Pregunta{
+/**.Pregunta{
   font-size: 50px;
   padding: 50px;
   text-align: center;
-}
+}**/
 
 
 
