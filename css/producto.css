@@ -1,0 +1,31 @@
+.container-producto{
+  background-color: grey;
+  display: flex;
+}
+
+.zoom{
+  weight:50%;
+  height: 50%;
+  padding: 10%;
+  /*padding-top: 10%;
+  padding-left: 10%;
+  padding-bottom: 10%;*/
+}
+
+.detalle-producto{
+  display: flex;
+  flex-direction: column;
+  padding-left: 10%;
+
+}
+.detalle-producto h2{
+  font-family: 'Roboto', sans-serif;
+}
+.detalle-producto h3,h4{
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+.compra-producto{
+  font-family: 'Open Sans', sans-serif;
+}
