@@ -1,5 +1,5 @@
 .container-producto{
-  background-color: grey;
+  background-color: #f3efef;
   display: flex;
 }
 
@@ -7,6 +7,7 @@
   weight:50%;
   height: 50%;
   padding: 10%;
+  flex-direction:column;
   /*padding-top: 10%;
   padding-left: 10%;
   padding-bottom: 10%;*/
@@ -15,16 +16,29 @@
 .detalle-producto{
   display: flex;
   flex-direction: column;
-  padding-left: 10%;
+  padding-left: 20%;
 
+}
+a{
+  color: #8bc34a;
 }
 .detalle-producto h2{
   font-family: 'Roboto', sans-serif;
 }
 .detalle-producto h3,h4{
   font-family: 'Open Sans', sans-serif;
+}
+
+.detalle-producto.promociones{
+  font-family: 'Open Sans', sans-serif;
 
 }
+.detalle-producto p{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+}
+
+
 
 .compra-producto{
   font-family: 'Open Sans', sans-serif;
