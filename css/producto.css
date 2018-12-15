@@ -1,6 +1,7 @@
 .info-entrega{
   display: flex;
   background-color: #8080803d;
+  border-radius: 15px;
   justify-content: flex-start;
   weight:100%;
   height: 10%;
@@ -22,7 +23,9 @@
 
 .container-producto{
   background-color: #f3efef;
+  border-radius: 15px;
   display: flex;
+
 }
 
 .zoom{
@@ -37,6 +40,7 @@
 
 .detalle-producto{
   display: flex;
+  line-height: 0.9;
   flex-direction: column;
   padding-left: 20%;
 
@@ -58,8 +62,18 @@ a{
 .detalle-producto p{
   font-family: 'Open Sans', sans-serif;
   font-size: 1em;
-}
+  padding-right:20px;
 
+}
+#precio-producto{
+  font-size: 2em;
+  color:red;
+}
+#imagen-producto{
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
 
 
 .compra-producto{
