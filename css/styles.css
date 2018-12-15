@@ -198,18 +198,9 @@ h2 {
   height: 50%;
 
 }
-.recomended{
-  width: 100%;
-  height: 600px;
-  background-color: grey;
 
-}
 
-/**.Pregunta{
-  font-size: 50px;
-  padding: 50px;
-  text-align: center;
-}**/
+
 
 
 
@@ -239,12 +230,4 @@ h2 {
       display:flex;
       flex-direction: column;
     }
-}
-
-
-/**perfil.php**/
-
-.perfil-main-container {
-  font-family: 'Rubik', sans-serif;
-  font-size: 1em;
 }
