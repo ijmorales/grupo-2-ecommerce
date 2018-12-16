@@ -1,0 +1,76 @@
+/* Reseteos generales */
+
+*{
+  box-sizing: border-box;
+}
+
+ul, ol {
+  padding: 0;
+  margin: 0;
+}
+
+li{
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  text-decoration: none;
+  color: #fff;
+}
+
+
+/* Botones */
+
+.asesor-online{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #8080801c;
+  border-radius: 15px;
+
+}
+.pregunta{
+  font-size:2em;
+  text-align: center;
+  font-family:roboto
+}
+
+.asesor-categorias{
+  display: flex;
+  justify-content: center;
+}
+
+.asesor-img-empresa{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding-right:5%;
+
+}
+.asesor-img-vivienda{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+}
+
+.asesor-img{
+  padding-bottom: 10px;
+}
+
+.asesor-btn{
+
+    background-color: #8bc34a;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    padding:10px;
+    font-size: 2em;
+  }
+}
