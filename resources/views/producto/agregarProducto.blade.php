@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+@endsection('css')
 @section('content')
 <div class='container'>
   <form action="{{ route('agregarProducto') }}" method="POST" enctype="multipart/form-data">
@@ -20,6 +23,10 @@
     <div class='form-group'>
       <label for="marca">Marca</label>
       <input type="text" class="form-control" name="marca">
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripcion</label>
+      <textarea class='form-control' name='descripcion' rows='6'> </textarea>
     </div>
     <div class='form-group'>
       <label for="imagen-principal">Imagen principal</label>
@@ -44,6 +51,21 @@
     <div class='form-group d-flex justify-content-center'>
       <input type="submit" class='btn btn-primary'>
     </div>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
   </form>
 </div>
 @endsection()
+
+@section('js')
+<script src="{{ asset('js/jquery-ui.js') }}"></script>
+<script src="{{ asset('js/agregarProducto.js') }}"></script>
+@endsection('js')

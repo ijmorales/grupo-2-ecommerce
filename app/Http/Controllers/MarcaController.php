@@ -41,4 +41,10 @@ class MarcaController extends Controller
             'nombre' => $data['nombre'],
         ]);
     }
+
+    public function listadoAPI()
+    {
+        $marcas = Marca::all();
+        return $marcas;
+    }
 }

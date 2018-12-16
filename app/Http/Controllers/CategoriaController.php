@@ -22,4 +22,10 @@ class CategoriaController extends Controller
         $vac = compact('categoria');
         return view('categoria.listadoCategorias', $vac);
     }
+
+    public function listadoAPI()
+    {
+        $categorias = Categoria::all();
+        return $categorias;
+    }
 }

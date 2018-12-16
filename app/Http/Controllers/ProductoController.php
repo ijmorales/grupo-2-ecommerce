@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Producto;
 use App\Imagen;
+use App\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
@@ -21,13 +22,22 @@ class ProductoController extends Controller
             'nombre' => ['string', 'required'],
             'precio' => ['numeric', 'required'],
             'imagen-principal' => ['image', 'max:6000'],
-            'tipo-imagen' => [Rule::in(['S', 'M', 'L'])]
+            'tipo-imagen' => [Rule::in(['S', 'M', 'L'])],
+            'descripcion' => ['string', 'max:65535'],
         ]);
     }
 
     public function listadoProducto()
     {
-        $productos = Producto::all();
+        $productos = Producto::paginate(6);
+        $vac = compact('productos');
+        return view('producto.listadoProducto', $vac);
+    }
+
+    public function listadoPorCategoria($id)
+    {
+        $categoria = Categoria::find($id);
+        $productos = $categoria->productos()->paginate(6);
         $vac = compact('productos');
         return view('producto.listadoProducto', $vac);
     }
@@ -37,12 +47,14 @@ class ProductoController extends Controller
         return view('producto.agregarProducto');
     }
 
-    protected function create(array $data){
+    protected function create(array $data)
+    {
         return Producto::create([
             'nombre' => $data['nombre'],
             'precio' => $data['precio'],
-            'id_categoria' => $data['categoria'],
-            'id_marca' => $data['marca']
+            'categoria_id' => $data['categoria'],
+            'marca_id' => $data['marca'],
+            'descripcion' => $data['descripcion'],
         ]);
     }
 
@@ -67,5 +79,16 @@ class ProductoController extends Controller
         }
 
         return redirect($this->redirectTo);
+    }
+
+    public function detalle($id)
+    {
+        $producto = Producto::find($id);
+        if(!$producto)
+        {
+            return Response('', 404);
+        }
+        $vac = compact('producto');
+        return view('producto.detalleProducto', $vac);
     }
 }

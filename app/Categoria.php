@@ -10,8 +10,13 @@ class Categoria extends Model
     public $timestamps = true;
     public $guard = [];
 
-    public function getSubcategorias()
+    public function subCategorias()
     {
-        return self::where('categoria_padre_id', '=', "$this->id");
+        return $this->hasMany('App\Categoria', 'categoria_padre_id');
+    }
+
+    public function productos()
+    {
+        return $this->hasMany('App\Producto');
     }
 }
