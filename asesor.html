@@ -32,15 +32,84 @@
 
 <div class="formularios">
 
-
-
 <div class="formulario-empresa">
   <h2>EMPRESA</h2>
-  <h3>Solicitamos algunos datos para una mejor asesoría</h3>
-  <form class="" action="index.html" method="post">
-    <input type="text" name="Entradas y salida" value="">
 
+  <form>
+    ¿Cuantas entradas y salidas tiene el lugar?<br>
+    <input type="number" name="entrada-salida">
+    <br>
+      ¿Cuantas aberturas?<br>
+    <input type="number" name="aberturas">
+    <br>
+      ¿Cuantos ambientes/espacios?<br>
+    <input type="number" name="ambientes">
+    <br>
+      ¿Tiene sectores al exterior?<br>
+    <input type="text" name="sectores-ext">
+    <br>
+      ¿Cuantos metros cuadrados aprox?<br>
+    <input type="number" name="metros">
+    <br>
+      ¿Necesitas monitoreo las 24hs con moviles de vigilancia?<br>
+    <input type="radio" name="monitoreo" value="si" checked> Si<br>
+    <input type="radio" name="monitoreo" value="no"> No<br>
+    <input type="radio" name="monitoreo" value="asesor"> No lo defino aun
+    <br>
+    <br>
+
+    <input type="submit" name="" value="Enviar">
   </form>
+
+</div>
+
+
+<div class="formulario-empresa-resultado">
+
+  <h2>El sistema te recomendamos es :</h2>
+
+  <div class="container-producto">
+    <div id="imagen-producto">
+      <img src="img/Kit-alarmas/Zoom/kit-3-zoom.png" alt="" class="zoom">
+
+    </div>
+    <div class="detalle-producto">
+      <h3>MARCA</h3>
+      <h2>DETALLE PRODUCTO</h2>
+      <div class="descripcion-producto">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+        </p>
+      </div>
+
+
+      <div id="precio-producto">
+        <p>$9.600</p>
+      </div>
+      <a href="" class="promociones">Promociones y financiacion</a>
+      <div class="compra-producto">
+        <form action="/action_page.php"> Cantidad: <input type="number" name="quantity" min="1" max="10">
+
+        <button type="button" class="btn-compra" name="button"> COMPRAR</button>
+      </form>
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
 
 </div>
 

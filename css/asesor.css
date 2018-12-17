@@ -77,7 +77,10 @@ a:hover{
 
 .formularios{
   display: flex;
-}
-.formulario-empresa{
+  flex-direction: row;
 
+  width: 100%;
+  height: 100%;
+  background-color: #8080801c;
+  border-radius: 15px;
 }
