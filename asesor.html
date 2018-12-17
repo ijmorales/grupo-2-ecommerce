@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="css/asesor.css">
+<link rel="stylesheet" type="text/css" href="css/producto.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:100" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
@@ -34,8 +35,11 @@
 
 <div class="formulario-empresa">
   <h2>EMPRESA</h2>
+  <fieldset>
 
-  <form>
+
+
+  <form action="/action_page.php">
     ¿Cuantas entradas y salidas tiene el lugar?<br>
     <input type="number" name="entrada-salida">
     <br>
@@ -57,11 +61,50 @@
     <input type="radio" name="monitoreo" value="asesor"> No lo defino aun
     <br>
     <br>
+    </fieldset>
 
     <input type="submit" name="" value="Enviar">
-  </form>
+  
 
 </div>
+
+<!-- Tarjeta 2 EMPRESA datos de cliente -->
+
+
+
+
+
+<div class="formulario-empresa-cliente">
+
+
+
+
+    <form action="/action_page.php">
+  <fieldset>
+    <legend>Datos personales:</legend>
+    Nombre/Razón social:<br>
+    <input type="text" name="nombre" value="nombre">
+    <br>
+    Apellido:<br>
+    <input type="text" name="apellido" value="apellido">
+    <br>
+    Email:<br>
+    <input type="text" name="email" value="email">
+    <br>
+    Teléfono:<br>
+    <input type="number" name="telefono" value="telefono">
+    <br>
+
+  </fieldset>
+</form>
+
+
+    <input type="submit" name="" value="Enviar">
+
+
+</div>
+
+
 
 
 <div class="formulario-empresa-resultado">
