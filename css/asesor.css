@@ -76,14 +76,34 @@ body{
     padding:10px;
     font-size: 2em;
   }
+
+.btn-siguiente{
+  justify-content: flex-end;
 }
 
 .formularios{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+}
 
-  width: 100%;
-  height: 100%;
-  background-color: #8080801c;
-  border-radius: 15px;
+.formulario-empresa{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.button-sig{
+  border-radius: 2px;
+  text-align: right;
+  background-color: #4CAF50; 
+   border: none;
+   color: white;
+   padding: 20px;
+   text-align: center;
+   text-decoration: none;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+
 }
