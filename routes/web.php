@@ -11,12 +11,10 @@
 |
 */
 
-Route::get('/', function(){
-    return view('welcome');
-});
+Route::get('/buscador', 'ProductoController@buscarProductos')->name('buscadorProductos');
 
 Route::get('/productos', 'ProductoController@listadoProducto');
-Route::get('/producto/{id}', 'ProductoController@detalle');
+Route::get('/producto/{id}', 'ProductoController@detalle')->name('detalleProducto');
 Route::get('/productos/categoria/{id}', 'ProductoController@listadoPorCategoria');
 
 Route::get('/productos/agregar', 'ProductoController@agregarForm')->name('agregarProducto');
@@ -33,6 +31,7 @@ Route::post('/marcas/agregar', 'MarcaController@agregar');
 Route::get('/carrito-test', 'CarritoController@carritoTest')->middleware('auth');
 Route::post('/carrito/agregar/', 'CarritoController@agregar')->middleware('auth');
 Route::post('/carrito/actualizar/', 'CarritoController@agregar')->middleware('auth');
+Route::post('/carrito/eliminar/', 'CarritoController@eliminar')->middleware('auth')->name('carritoEliminar');
 
 Route::get('/checkout/datos-pago', 'PagoController@mostrarFormPago')->middleware('auth')->name('datosPago')->middleware('pedido');
 Route::post('/checkout/datos-pago', 'PagoController@procesarPago')->middleware('auth')->middleware('pedido');
@@ -65,7 +64,7 @@ Route::get('email/verify', 'Auth\VerificationController@show')->name('verificati
 Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 // API
 

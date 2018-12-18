@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('buscador')
 <div class='container'>
     <div class="row producto-info-container" id="{{ $producto->id }}">
         <div class="col-xs-12 col-sm-6 producto-imagen-container">

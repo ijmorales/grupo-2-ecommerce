@@ -27,8 +27,8 @@
 <body>
     <div class='main-container'>
         <header class="main-header">
-            <nav class="navbar navbar-dark main-navbar navbar-expand-md">
-                <a class="navbar-brand" href="home.php">
+            <nav class="navbar navbar-dark main-navbar navbar-expand-md mb-0">
+                <a class="navbar-brand" href="{{ route('home') }}">
                 <img src="/img/logo.png" alt="" class="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="links-utiles">
                 <span class="links-extra">
-                    <ul>
+                    <ul class="links-extra-ul">
                     <li>
                         <a href="#">Quienes somos</a>
                     </li>
@@ -115,7 +115,6 @@
                 </div>
             </nav>
         </header>
-
         @yield('content')
 
         <footer class="main-footer">

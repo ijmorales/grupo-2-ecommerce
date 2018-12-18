@@ -30,15 +30,17 @@ class ProductoController extends Controller
     public function listadoProducto()
     {
         $productos = Producto::paginate(6);
-        $vac = compact('productos');
+        $categorias = Categoria::where('publicada', 1)->where('categoria_padre_id', null)->get();
+        $vac = compact('productos', 'categorias');
         return view('producto.listadoProducto', $vac);
     }
 
     public function listadoPorCategoria($id)
     {
-        $categoria = Categoria::find($id);
-        $productos = $categoria->productos()->paginate(6);
-        $vac = compact('productos');
+        $categoriaActiva = Categoria::find($id);
+        $categorias = Categoria::where('publicada', 1)->where('categoria_padre_id', null)->get();
+        $productos = $categoriaActiva->productos()->paginate(6);
+        $vac = compact('productos', 'categoriaActiva', 'categorias');
         return view('producto.listadoProducto', $vac);
     }
 
@@ -90,5 +92,18 @@ class ProductoController extends Controller
         }
         $vac = compact('producto');
         return view('producto.detalleProducto', $vac);
+    }
+
+    public function buscarProductos(Request $req)
+    {
+        $busqueda = $req->busqueda;
+
+        // Buscamos productos que coincidan con lo buscado.
+        $productos = Producto::where('nombre', 'like', "%$busqueda%")->paginate(6);
+
+        $categorias = Categoria::all();
+        $vac = compact('categorias', 'productos', 'busqueda');
+
+        return view('producto.listadoProducto', $vac);
     }
 }

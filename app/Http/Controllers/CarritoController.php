@@ -44,25 +44,30 @@ class CarritoController extends Controller
         // Agregamos el producto al carrito.
         $carrito->attachProducto($producto, $cantidad);
 
-        return response("true");
+        $data = [
+            'carritoCount' => $carrito->productos()->sum('cantidad'),
+            'success' => true,
+        ];
+        return response(json_encode($data));
     }
 
     public function carrito()
     {
         // Chequeamos si el usuario tiene productos en el carrito
         $carrito = auth()->user()->carritoActivo();
-        if($carrito === null)
+        $productos = $carrito->productos()->get();
+
+        if($productos->isEmpty())
         {
-            // Si no tiene carrito lo mandamos a productos para que agregue alguno!
+            // Si no tiene objetos en el carrito lo mandamos a productos para que agregue alguno!
             return redirect('/productos');
         }
 
         // Calculamos el precio total del carrito, hasta el momento.
         $montoTotal = $carrito->montoTotal();
 
-        $productos = $carrito->productos()->get();
         $vac = compact('productos', 'montoTotal');
-        return view('carrito.listado', $vac);
+        return view('carrito.listadoCarrito', $vac);
     }
 
     public function actualizarCarrito(Request $req)
@@ -85,5 +90,16 @@ class CarritoController extends Controller
         $carrito->save();
 
         return redirect('/carrito');
+    }
+
+    public function eliminar(Request $req)
+    {
+        $carrito = Auth::user()->carritoActivo();
+        $producto = Producto::find($req->id);
+        $carrito->productos()->detach($producto->id);
+        $carrito->save();
+        
+        $respuesta = ['id' => $req->id, 'success' => true];
+        return json_encode($respuesta);
     }
 }
