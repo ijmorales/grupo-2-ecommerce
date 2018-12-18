@@ -14,8 +14,8 @@
 Route::get('/buscador', 'ProductoController@buscarProductos')->name('buscadorProductos');
 
 Route::get('/productos', 'ProductoController@listadoProducto');
-Route::get('/producto/{id}', 'ProductoController@detalle')->name('detalleProducto');
-Route::get('/productos/categoria/{id}', 'ProductoController@listadoPorCategoria');
+Route::get('/productos/{id}', 'ProductoController@detalle')->name('detalleProducto');
+Route::get('/productos/categoria/{id}', 'ProductoController@listadoPorCategoria')->name('listadoPorCategoria');
 
 Route::get('/productos/agregar', 'ProductoController@agregarForm')->name('agregarProducto');
 Route::post('/productos/agregar', 'ProductoController@agregar');

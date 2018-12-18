@@ -16,13 +16,15 @@ window.addEventListener('load', function(){
         let element = botonesEliminarCarrito[i];
         element.addEventListener('click', function(event){
             event.preventDefault();
-            let id = element.id;
-            return eliminarCarrito(id);
+            let id = this.id;
+            return eliminarCarrito(id, function(){
+                document.querySelector(`#producto-${id}`).setAttribute('style', 'display:none !important');
+            });
         });
     }
 });
 
-function eliminarCarrito(id){
+function eliminarCarrito(id, callback){
     var data = {id: id};
 
     var headers = new Headers();
@@ -46,12 +48,15 @@ function eliminarCarrito(id){
     .then(function(response){
         return response.json()
     })
-    .then(function(json){
-        if(json.success){
+    .then(function(data){
+        if(data.success){
+            actualizarContadorCarrito(data.carritoCount);
+            callback();
             swal('Listo!', 'Se elimino el producto de tu carrito.', 'success');
         }else{
             swal('Error :(', 'Hubo un error eliminando el producto de tu carrito', 'error');
         }
-        console.log(json);
+        console.log(data);
     });
+    return true;
 }

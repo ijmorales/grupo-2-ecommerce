@@ -29,7 +29,7 @@ function agregarCarrito(productoID, cantidad){
     .then(function(data){
         console.log(data);
         if(data.success === true){
-            document.querySelector('#carrito-count').innerHTML = data.carritoCount;
+            actualizarContadorCarrito(data.carritoCount);
             if(cantidad == 1)
             {
                 swal("Listo!", "Se agrego el producto a tu carrito.", "success");
@@ -42,4 +42,8 @@ function agregarCarrito(productoID, cantidad){
             swal("Error :(", "Hubo un problema al agregar tu producto al carrito.", 'error');
         }
     })
+}
+
+function actualizarContadorCarrito(contador){
+    document.querySelector('#carrito-count').innerHTML = contador;
 }

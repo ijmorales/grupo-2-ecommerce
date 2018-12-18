@@ -99,7 +99,7 @@ class CarritoController extends Controller
         $carrito->productos()->detach($producto->id);
         $carrito->save();
         
-        $respuesta = ['id' => $req->id, 'success' => true];
+        $respuesta = ['id' => $req->id, 'success' => true, 'carritoCount' => $carrito->productos()->sum('cantidad')];
         return json_encode($respuesta);
     }
 }

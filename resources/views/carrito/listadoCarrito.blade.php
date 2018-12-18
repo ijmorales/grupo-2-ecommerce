@@ -9,7 +9,7 @@
             @csrf
             @foreach($productos as $producto)
             <div class="row">
-                <div class="container-producto-carrito mb-2 pt-2 pb-2 d-flex justify-content-between">
+                <div class="container-producto-carrito mb-2 pt-2 pb-2 d-flex justify-content-between" id="producto-{{ $producto->id }}">
                     <div class="img-container-carrito col-sm-12 col-md-3 d-flex flex-column align-items-center justify-content-center">
                         <img src="{{ $producto->getImagenPrincipal() }}" alt="" class="img-carrito">
                     </div>
