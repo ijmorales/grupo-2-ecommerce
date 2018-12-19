@@ -148,13 +148,13 @@ a:hover{
 
 .main-footer{
   display: flex;
-  flex-flow: row wrap;
+  /*flex-flow: row wrap;*/
   justify-content: center;
-  margin-top: 1rem;
-  /* height: 20vh; */
+  margin-top: 2rem;
+  height: 20vh;
   background-color: #404041;
   width: 100%;
-  padding: .5rem 1rem;
+  padding: 5rem 1rem;
 }
 
 .logo-footer-container{
@@ -208,13 +208,136 @@ a:hover{
 
 /* ESTILOS DEL HOME */
 
+/*carrousel*/
+
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+  background-color: #f2f2f2;
+  padding: 25px;
+}
+
+.carousel-inner img {
+  width: 100%; /* Set width to 100% */
+  margin: auto;
+  min-height:200px;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media (max-width: 600px) {
+.carousel-caption {
+  display: none;
+}
+}
+
+/*Asesor online*/
+
+#asesor-online{
+  display: flex;
+  flex-direction: column;
+  width: 100% ;
+  height: 100%;
+  background-color: #8080801c;
+  border-radius: 15px;
+
+}
+
+.pregunta{
+  font-size:2em;
+  text-align: center;
+  padding-bottom: 10px;
+  font-family:roboto
+}
+
+.asesor-categorias{
+  display: flex;
+  justify-content: center;
+}
+
+.asesor-img-empresa{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding-right:5%;
+
+}
+.asesor-img-vivienda{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+}
+
+.asesor-img{
+  padding-bottom: 10px;
+  width: 150px;
+  height: 150px
+}
+@media (max-width: 600px){
+  .asesor-img{
+    display: none;
+  }
+}
+
+}
+
+.asesor-btn{
+
+    background-color: #8bc34a ;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding:10px;
+    font-size: 1em;
+    font-family: roboto;
+  }
+
+.btn-siguiente{
+  justify-content: flex-end;
+}
+
+.formularios{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formulario-empresa{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.button-sig{
+  border-radius: 2px;
+  text-align: right;
+  background-color: #4CAF50;
+   border: none;
+   color: white;
+   padding: 20px;
+   text-align: center;
+   text-decoration: none;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+
+}
+
+
+
+
 div.main-container{
   display: flex;
   flex-flow: column nowrap;
   margin: 0 auto;
   max-width: 1180px !important;
   width: 100%;
-  /* height: 100vh; */
+  height: 100vh;
   justify-content: space-between;
 }
 
@@ -224,7 +347,7 @@ div.main-container{
 
 .productos ul, ol {
   color: white;
-  background: grey;
+  background: #8bc34a00;
 }
 
 .photo {
@@ -320,6 +443,7 @@ article.productos{
   margin-left: 5px;
   margin-top: 5px;
 }
+
 
 
 
@@ -555,7 +679,7 @@ a {
   border: 0;
 }
 
-/* 
+/*
 VISTA LISTADO PRODUCTOS
 */
 
@@ -630,7 +754,7 @@ VISTA LISTADO PRODUCTOS
 .listado-categorias{
   width: 100%;
 }
-/* 
+/*
 
 */
 

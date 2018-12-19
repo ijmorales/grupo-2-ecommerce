@@ -11,6 +11,8 @@
 |
 */
 
+
+
 Route::get('/buscador', 'ProductoController@buscarProductos')->name('buscadorProductos');
 
 Route::get('/productos', 'ProductoController@listadoProducto');
@@ -66,8 +68,9 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 
 Route::get('/', 'HomeController@index')->name('home');
 
-// API
+Route::get('home', function(){
+    return view('home');
+});
 
 Route::get('/api/categorias', 'CategoriaController@listadoAPI')->middleware('api');
 Route::get('/api/marcas', 'MarcaController@listadoAPI')->middleware('api');
-

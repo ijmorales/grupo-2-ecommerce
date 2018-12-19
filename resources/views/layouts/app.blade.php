@@ -17,8 +17,8 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <!-- Styles -->
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -41,7 +41,7 @@
                 <span class="links-extra">
                     <ul class="links-extra-ul">
                     <li>
-                        <a href="#">Quienes somos</a>
+                        <a href="#">Home</a>
                     </li>
                     <li>
                         <p>|</p>
@@ -58,18 +58,18 @@
                     </ul>
                 </span>
                 <span class="llamenos">
-                    <p>Llamenos 0800-888-6666</p>
+                    <p>Llamenos +5411 4209-3622</p>
                 </span>
                 <span class="header-rrss">
                     <ul>
                     <li>
-                        <a href="https://twitter.com/"><ion-icon name="logo-twitter" size="large"></ion-icon></a>
+                        <a href="https://www.linkedin.com/"><ion-icon name="logo-linkedin" size="large"></ion-icon></a>
                     </li>
                     <li>
-                        <a href="https://instagram.com/"><ion-icon name="logo-instagram" size="large"></ion-icon></a>
+                        <a href="https://www.instagram.com/helsecurity/"><ion-icon name="logo-instagram" size="large"></ion-icon></a>
                     </li>
                     <li>
-                        <a href="https://facebook.com/"><ion-icon name="logo-facebook" size="large"></ion-icon></a>
+                        <a href="https://www.facebook.com/HEL.Seguridad/"><ion-icon name="logo-facebook" size="large"></ion-icon></a>
                     </li>
                     </ul>
                 </span>
@@ -100,10 +100,10 @@
                     @endif
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Kits alarmas</a>
+                    <a class="nav-link" href="#">Alarmas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Camaras</a>
+                    <a class="nav-link" href="#">Cámaras</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Anti incendios</a>
@@ -124,20 +124,20 @@
             <div class="informacion-contacto">
                 <ul>
                 <li>
-                    <p class="footer-info">Av. Corrientes 5067 1º Piso Of. 5. C1414AJD. C.A.B.A.</p>
+                    <p class="footer-info">Boquerón 2486 - Valentín Alsina | Lanús </p>
                 </li>
                 <li>
-                    <p class="footer-info">Tel/Fax: (011) 4209-3622 / (011) 6382-3399</p>
+                    <p class="footer-info">Tel +5411 4209-3622 </p>
                 </li>
                 <li>
-                    <p class="footer-info">Email: info@helsecurity.com</p>
+                    <p class="footer-info">info@helsecurity.com</p>
                 </li>
                 </ul>
             </div>
             <div class="footer-rrss-container">
                 <ul class="footer-rrss-list">
                 <li>
-                    <ion-icon name="logo-twitter" size="large" class="rrss-verde"></ion-icon>
+                    <ion-icon name="logo-linkedin" size="large" class="rrss-verde"></ion-icon>
                 </li>
                 <li>
                     <ion-icon name="logo-instagram" size="large" class="rrss-verde"></ion-icon>
