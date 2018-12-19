@@ -99,6 +99,11 @@ a:hover{
   font-size: 1em;
 }
 
+@media query {
+  
+
+}
+
 /*footer*/
 
 .main-footer {

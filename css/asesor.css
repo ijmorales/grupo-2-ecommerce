@@ -70,11 +70,11 @@ body{
 .asesor-btn{
 
     background-color: #8bc34a ;
-    border-radius: 15px;
+    border-radius: 5px;
     border: none;
     color: white;
     padding:10px;
-    font-size: 2em;
+    font-size: 1em;
   }
 
 .btn-siguiente{
@@ -96,7 +96,7 @@ body{
 .button-sig{
   border-radius: 2px;
   text-align: right;
-  background-color: #4CAF50; 
+  background-color: #4CAF50;
    border: none;
    color: white;
    padding: 20px;
