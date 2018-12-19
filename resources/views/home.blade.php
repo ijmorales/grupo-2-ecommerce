@@ -45,18 +45,18 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="https://placehold.it/1200x400?text=IMAGE" alt="Image">
+        <img src="/img/carrousel-home.png" alt="Image">
         <div class="carousel-caption">
-          <h3>Cámaras de seguridad</h3>
-          <p>Proteja su empresa y hogar </p>
+          <!--<h3>Cámaras de seguridad</h3>
+          <p>Proteja su empresa y hogar </p>-->
         </div>
       </div>
 
       <div class="item">
-        <img src="https://placehold.it/1200x400?text=Another Image Maybe" alt="Image">
+        <img src="/img/carrousel-home2.png" alt="Image">
         <div class="carousel-caption">
-          <h3>Alarmas</h3>
-          <p>La tecnología mas segura</p>
+          <!--<h3>Alarmas</h3>
+          <p>La tecnología mas segura</p>-->
         </div>
       </div>
     </div>
