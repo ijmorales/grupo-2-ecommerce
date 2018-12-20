@@ -40,6 +40,7 @@ window.addEventListener('load', function() {
         var containerElegirDireccion = document.querySelector('div.direcciones-container');
         containerElegirDireccion.style.display = 'none';
         var containerDireccionNueva = document.querySelector('div.direccion-nueva-container');
+        containerDireccionNueva.classList.add('row');
         containerDireccionNueva.style.display = 'flex';
     })
 });

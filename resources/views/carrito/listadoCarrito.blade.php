@@ -1,9 +1,11 @@
 @extends('layouts.app')
-@section('content')
+@section('cabecera')
 @include('buscador')
+@endsection('cabecera')
+@section('content')
 <div class="container">
     <div class="container-carrito">
-        <h2>CARRITO</h2>
+        <h2 class="mt-3">MI CARRITO</h2>
         <hr>
         <form action="{{ route('carrito') }}" method="POST" name="actualizar" id="actualizar">
             @csrf
@@ -20,10 +22,10 @@
                         <div class="cantidad-container">
                             <span class="mr-2">Cantidad:</span>
                             <input type="hidden" name="productos[{{ $loop->index }}][id]" value="{{ $producto->id }}" form="actualizar">
-                            <input type="text" class="cantidad-input" name="productos[{{ $loop->index }}][cantidad]" value="{{ $producto->pivot->cantidad }}" form="actualizar">
+                            <input id="{{ $producto->id }}" type="text" class="cantidad-input" name="productos[{{ $loop->index }}][cantidad]" value="{{ $producto->pivot->cantidad }}" form="actualizar">
                         </div>
                         <div class="precio-container">
-                            <strong class="precio-span">$ {{ $producto->precio }}</strong>
+                            <strong class="precio-span" id="{{ $producto->id }}" value="{{ $producto->precio }}">$ {{ $producto->precio }}</strong>
                         </div>
                     </div>
                     <div class="col-md-2 d-flex flex-column justify-content-center align-items-center">
@@ -32,14 +34,14 @@
                 </div>
             </div>
             @endforeach
-            <div class = "resume-container mt-4 pt-2 pb-2">
+            <div class = "resume-container mt-4 pt-2 pb-2 mb-4">
                 <div class="subtotal-container col-6  d-flex align-items-center">
                     <span class="subtotal" style="">
                         <h4 class="subtotal-h4">
                             <span>
                                 TOTAL:
                             </span>
-                            <span class="texto-verde">
+                            <span class="texto-verde" id="subtotalDisplay">
                                 $ {{ $montoTotal }}
                             </span>
                         </h3>

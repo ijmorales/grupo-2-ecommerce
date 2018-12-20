@@ -1,20 +1,12 @@
-@extends('layouts.app')
-@section('content')
-<div class="promo-text">
-    <h2 class="titulo-promo">Promociones</h2>
-</div>
-<div class="promo-carousel-container">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+@extends('layouts.app') @section('content')
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-    <div class="carousel-item active">
-    <img class="d-block w-100" class="promo-photo" src="img/carrousel.png" alt="First slide">
-    </div>
-    <div class="carousel-item">
-    <img class="d-block w-100" class="promo-photo" src="img/perimetrales.png" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-    <img class="d-block w-100" class="promo-photo" src="img/drones.png" alt="Third slide">
-    </div>
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="{{ asset('img/carrousel-home.png') }}" alt="First slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="{{ asset('img/carrousel-home2.png') }}" alt="Second slide">
+        </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -24,109 +16,53 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
+</div>
+<div class="separador-caja">
+    <h3 class="separador-texto">ASESOR ONLINE</h2>
+</div>
+<div class="asesor-online">
+    <div class="pregunta">
+        <h2>¿Qué necesitás proteger?</h2>
+    </div>
+
+    <div class="asesor-categorias row d-flex justify-content-around">
+        <div class="asesor-img-empresa col-xs-12 col-md-5 col-lg-4">
+            <img src="img/empresa.png" alt="Img" class="img-responsive" />
+            <button class="asesor-btn">Empresa</button>
+        </div>
+
+        <div class="asesor-img-vivienda col-xs-12 col-md-5 col-lg-4">
+            <img src="img/vivienda.png" alt="Img" class="img-responsive" />
+            <button class="asesor-btn">Vivienda</button>
+        </div>
     </div>
 </div>
-    <div class="h2-productos">
-        <h2 class="titulo-product">Productos</h2>
-    </div>
-<div class="boxes-container">
-    <section class="productos-container">
-    <article class="productos" class="productbox">
-        <div class="photo-container">
-        <img class="photo" src="img/producto1.png" alt="pdto 01">
+<div class="separador-caja">
+    <h3 class="separador-texto">DESTACADOS</h3>
+</div>
+<div class="destacados-container row p-4">
+    @foreach($productos as $producto)
+    <article class="col-xs-12 col-md-6 col-lg-4 producto-box" id="{{ $producto->id }}">
+        <a href="{{ route('detalleProducto', ['id' => $producto->id]) }}">
+            <div class="producto-mini">
+                <img class="producto-mini-img" src='{{ $producto->getImagenPrincipal() }}' alt="Card image cap">
+                <div class="producto-mini-nombre">
+                    {{ $producto->nombre }}
+                </div>
+                <div class="producto-mini-precio">
+                    ${{ $producto->precio }},00
+                </div>
+                <div class="producto-mini-precio">
+                    <ion-icon name="cart" size="large" class="agregar-carrito pointer-hover"></ion-icon> 
+                </div>
             </div>
-        <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-        <a class="masInfo" href="#">+Más Info</a></div>
+        </a>
     </article>
-    <article class="productos" class="productbox">
-        <div class="photo-container">
-            <img class="photo" src="img/kit4camaras.png" alt="pdto 01">
-        </div>
-        <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-                <a class="masInfo" href="#">+Más Info</a></div>
-        </article>
-        <article class="productos" class="productbox">
-        <div class="photo-container">
-            <img class="photo" src="img/kit4camaras.png" alt="pdto 01">
-            </div>
-        <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-            <a class="masInfo" href="#">+Más Info</a></div>
-        </article>
-        <article class="productos" class="productbox">
-        <div class="photo-container">
-            <img class="photo" src="img/img-cam.jpg" alt="pdto 01">
-            </div>
-        <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-            <a class="masInfo" href="#">+Más Info</a></div>
-        </article>
-        <article class="productos" class="productbox">
-        <div class="photo-container">
-            <img class="photo" src="img/img-cam.jpg" alt="pdto 01">
-            </div>
-        <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-            <a class="masInfo" href="#">+Más Info</a></div>
-        </article>
-        <article class="productos" class="productbox">
-        <div class="photo-container">
-            <img class="photo" src="img/img-cam.jpg" alt="pdto 01">
-            </div>
-        <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-            <a class="masInfo" href="#">+Más Info</a></div>
-        </article>
-        <article class="productos" class="productbox">
-        <div class="photo-container">
-            <img class="photo" src="img/img-cam.jpg" alt="pdto 01">
-            </div>
-        <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-            <a class="masInfo" href="#">+Más Info</a></div>
-        </article>
-        <article class="productos" class="productbox">
-        <div class="photo-container">
-            <img class="photo" src="img/img-cam.jpg" alt="pdto 01">
-            </div>
-        <div class="product-text" class="productbox"><p class="texto-producto">Sistema de alimentacion ininterrumpida UPS de 30 minutos para DVR más 4 cámaras</p>
-            <a class="masInfo" href="#">+Más Info</a>
-        </div>
-        </article>
-    </section>
-    <div class="sidebar-container">
-        <div class="novedades-container">
-        <div class="promo1">
-            <img class="promo-img" src="img/promo1.png" alt="">
-            <h2 class="h2-promo-eventos">Novedad 1</h2>
-        </div>
-        <div class="promo2">
-            <img class="promo-img" src="img/promo2.png" alt="">
-            <h2 class="h2-promo-eventos">Novedad 2</h2>
-        </div>
-        <div class="promo3">
-            <img class="promo-img" src="img/promo3.png" alt="">
-            <h2 class="h2-promo-eventos">Novedad 3</h2>
-        </div>
-
-        </div>
-        <div class="publicidad-container">
-        <div class="promo1">
-            <img class="promo-img" src="img/ad1.png" alt="">
-            <h2 class="h2-promo-eventos">Ad 1</h2>
-        </div>
-        <div class="promo2">
-            <img class="promo-img" src="img/ad2.png" alt="">
-            <h2 class="h2-promo-eventos">Ad 2</h2>
-        </div>
-        </div>
-        <div class="eventos-container">
-        <img class="promo-img" src="img/ad3.png" alt="">
-        </div>
-    </div>
-</div>
-
-<div class='recomendador container'>
-    <form action="/recomendador" method="POST" class='d-flex flex-column'>
-        <div class='form-group'>
-            <input type="text" class='form-control'>
-        </div>
-    </form>
+    @endforeach
 </div>
 
 @endsection
+
+@section('js')
+<script src="{{ asset('js/carrousel.js') }}"></script>
+@endsection('js')

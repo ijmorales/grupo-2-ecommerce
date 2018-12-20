@@ -1,7 +1,7 @@
-<div class="buscador-caja p-2 mb-4">
+<div class="buscador-caja p-2">
     <form class="form-inline mr-4" method="GET" action="{{ route('buscadorProductos') }}">
         <input class="form-control mr-2" type="search" placeholder="Buscar producto..." aria-label="Search" name="busqueda">
-        <button class="btn btn-verde" type="submit">Buscar</button>
+        <button class="btn btn-verde btn-busqueda d-none d-sm-block" type="submit">Buscar</button>
     </form>
     @if(isset($busqueda))
     <span class="termino-busqueda d-flex align-items-center">

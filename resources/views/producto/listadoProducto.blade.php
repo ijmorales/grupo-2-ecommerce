@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
-@section('content')
+@section('cabecera')
 @include('buscador')
+@endsection('cabecera')
+@section('content')
 
 <div class='container'>
-  <div class="row">
+  <div class="row d-flex pt-3 pb-3">
     <sidebar class="col-sm-4">
       <div class="categorias-container">
         <ul class="list-group mb-3 listado-categorias">
@@ -15,9 +17,11 @@
               @if($categoria->subCategorias()->get())
                 <ul class="list-group sub-categorias-ul">
                   @foreach($categoria->subCategorias()->get() as $subCategoria)
-                  <li class="lista-level-2-item">
-                    {{ $subCategoria->nombre }}
-                  </li>
+                  <a href="{{ route('listadoPorCategoria', ['id' => $subCategoria->id]) }}">
+                    <li class="lista-level-2-item">
+                      {{ $subCategoria->nombre }}
+                    </li>
+                  </a>
                   @endforeach
                 </ul>
               @endif
@@ -32,7 +36,7 @@
       <div class="row">
         @foreach($productos as $producto)
         <a href="{{ route('detalleProducto', ['id' => $producto->id]) }}">
-          <article class="col-xs-12 col-md-6 col-lg-4 producto-box mb-4" id="{{ $producto->id }}">
+          <article class="col-xs-12 col-md-6 col-lg-4 producto-box mb-4 d-flex flex-column justify-content-center" id="{{ $producto->id }}">
             <div class="producto-mini">
               <img class="producto-mini-img" src='{{ $producto->getImagenPrincipal() }}' alt="Card image cap">
               <div class="producto-mini-nombre">
@@ -57,6 +61,5 @@
 @endsection
 
 @section('js')
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src='{{ asset('js/listadoProductos.js') }}'></script>
-@endsection
+@endsection()

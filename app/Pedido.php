@@ -13,7 +13,7 @@ class Pedido extends Model
 
     public function carrito()
     {
-        return $this->hasOne('App\Carrito');
+        return $this->belongsTo('App\Carrito');
     }
 
     public function productos()

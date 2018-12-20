@@ -8,6 +8,7 @@ use App\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Collection;
 
 class ProductoController extends Controller
 {
@@ -39,7 +40,15 @@ class ProductoController extends Controller
     {
         $categoriaActiva = Categoria::find($id);
         $categorias = Categoria::where('publicada', 1)->where('categoria_padre_id', null)->get();
-        $productos = $categoriaActiva->productos()->paginate(6);
+        $subcategorias = $categoriaActiva->subcategorias()->get();
+        $productosCategoria = $categoriaActiva->productos()->get();
+        if($subcategorias){
+            foreach($subcategorias as $subcategoria){
+                $productosSub = $subcategoria->productos()->get();
+                $productosCategoria = $productosCategoria->concat($subcategoria->productos()->get());
+            }
+        }
+        $productos = $this->paginate($productosCategoria, 6, request('page'), ['path' => \Illuminate\Pagination\Paginator::resolveCurrentPath()]);
         $vac = compact('productos', 'categoriaActiva', 'categorias');
         return view('producto.listadoProducto', $vac);
     }
@@ -58,6 +67,12 @@ class ProductoController extends Controller
             'marca_id' => $data['marca'],
             'descripcion' => $data['descripcion'],
         ]);
+    }
+    
+    protected function paginate($items, $perPage = 15, $page = null, $options = [])
+    {
+        $page = $page ?: (\Illuminate\Pagination\Paginator::resolveCurrentPage() ?: 1);
+        return new \Illuminate\Pagination\LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
     public function agregar(Request $req)
@@ -90,7 +105,8 @@ class ProductoController extends Controller
         {
             return Response('', 404);
         }
-        $vac = compact('producto');
+        $productosRelacionados = $producto->categoria()->first()->productos()->get()->where('id', '!=', $producto->id)->take(3);
+        $vac = compact('producto', 'productosRelacionados');
         return view('producto.detalleProducto', $vac);
     }
 

@@ -28,4 +28,9 @@ class Producto extends Model
     {
         return $this->belongsToMany('App\Carrito', 'carritos_productos')->withPivot('cantidad')->withTimestamps();
     }
+
+    public function categoria()
+    {
+        return $this->belongsTo('App\Categoria');
+    }
 }

@@ -1,3 +1,4 @@
+
 window.addEventListener('load', function(){
     var botonesAgregarCarrito = document.querySelectorAll(".agregar-carrito");
     for (var i = 0; i < botonesAgregarCarrito.length; i++) {
@@ -9,3 +10,5 @@ window.addEventListener('load', function(){
         });
     }
 });
+
+

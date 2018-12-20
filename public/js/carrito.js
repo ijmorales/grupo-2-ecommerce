@@ -3,6 +3,15 @@ window.addEventListener('load', function(){
     var botonConfirmarCarrito = document.querySelector('.confirmar-carrito');
     var botonActualizarCarrito = document.querySelector('.actualizar-carrito');
 
+    var inputsCantidad = document.querySelectorAll('.cantidad-input');
+    var subtotalDisplay = document.querySelector('#subtotalDisplay');
+    for (let i = 0; i < inputsCantidad.length; i++) {
+        let input = inputsCantidad[i];
+        input.addEventListener('change', function(){
+            subtotalDisplay.innerHTML = `$ ${sumarCarrito()}`;
+        });
+    }
+
     for (let i = 0; i < inputsCantidadCarrito.length; i++) {
         let element = inputsCantidadCarrito[i];
         element.addEventListener('change', function(){
@@ -19,6 +28,7 @@ window.addEventListener('load', function(){
             let id = this.id;
             return eliminarCarrito(id, function(){
                 document.querySelector(`#producto-${id}`).setAttribute('style', 'display:none !important');
+                subtotalDisplay.innerHTML = `$ ${sumarCarrito()}`;
             });
         });
     }
@@ -50,13 +60,26 @@ function eliminarCarrito(id, callback){
     })
     .then(function(data){
         if(data.success){
-            actualizarContadorCarrito(data.carritoCount);
             callback();
             swal('Listo!', 'Se elimino el producto de tu carrito.', 'success');
         }else{
             swal('Error :(', 'Hubo un error eliminando el producto de tu carrito', 'error');
         }
-        console.log(data);
     });
     return true;
+}
+
+function sumarCarrito(){
+    var productos = document.querySelectorAll('.container-producto-carrito');
+    var suma = 0;
+    for (let i = 0; i < productos.length; i++) {
+        let producto = productos[i];
+        if(producto.style.display == 'none'){
+            continue;
+        }
+        let precio = producto.children[1].children[2].children[0].getAttribute('value');
+        let cantidad = producto.children[1].children[1].children[2].value;
+        suma += precio*cantidad;
+    }
+    return suma;
 }

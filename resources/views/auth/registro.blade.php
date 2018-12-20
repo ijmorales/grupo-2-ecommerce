@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container form-container">
+<div class="container form-container mb-3">
     <form action="{{ route('registro') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="flex-container">

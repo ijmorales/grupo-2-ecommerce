@@ -43,6 +43,8 @@ class PedidoController extends Controller
 
     public function finalizarPedido()
     {
-        return view('pedido.finalizarPedido');
+        $pedido = Auth::user()->pedidos()->where('estado_pedido_id', 3)->get()->last();
+        $vac = compact('pedido');
+        return view('pedido.finalizarPedido', $vac);
     }
 }

@@ -48,7 +48,7 @@ class EnvioController extends Controller
         $pedido->envio()->associate($envio);
 
         // Actualizo el estado del pedido.
-        $pedido->estado()->associate(EstadoPedido::getAEnviar());
+        $pedido->estado_pedido_id = 3;
         $pedido->save();
 
         return redirect()->route('finalizarPedido');

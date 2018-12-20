@@ -1,6 +1,6 @@
-const ajaxURL = "/carrito/agregar";
 
 function agregarCarrito(productoID, cantidad){
+    var ajaxURL = "/carrito/agregar";
     var data = {id: productoID, cantidad: cantidad};
 
     var headers = new Headers();
