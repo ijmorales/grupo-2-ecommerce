@@ -1,0 +1,15 @@
+TODO:
+- [x] Implementar login.
+- [] Permisos para distintos tipos de usuario.
+- [x] Modelo para el producto.
+- [x] ProductoController.
+- [] Vista ListadoProductos.
+- [] Vista AgregarProducto.
+- [] Vista EliminarProducto.
+- [] Vista ModificarProducto.
+- [] Vista de la Home, con los productos obtenidos de la base.
+- [] Pagina de Ajustes, para modificar los productos y las promociones del home.
+- [] Rehacer diagrama de entidades.
+- [] Modelo Pedido.
+- [] Modelo Envio.
+- [] Rediseñar el home.
